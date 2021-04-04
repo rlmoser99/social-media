@@ -1,0 +1,36 @@
+require:
+  - rubocop-rails
+
+Rails:
+  Enabled: true
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - db/schema.rb
+    - db/seeds.rb
+    - bin/**/*
+    - node_modules/**/*
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+  Exclude:
+    - config/routes.rb
+
+Rails/FilePath:
+  Exclude:
+  - config/environments/development.rb
+
+Style/BlockComments:
+  Exclude:
+    - spec/spec_helper.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
