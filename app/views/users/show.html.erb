@@ -1,0 +1,7 @@
+<h1>User Show Page</h1>
+<% if current_user %>
+  <p>Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
+  <p>Email: <%= current_user.email %></p>
+<% else %>
+  <p>Please Sign Up or Log In</p>
+<% end %>

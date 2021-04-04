@@ -7,6 +7,7 @@ ruby '2.7.2'
 
 gem 'amazing_print', '~> 1.3'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
