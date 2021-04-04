@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+gem 'amazing_print', '~> 1.3'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '~> 1.1'
@@ -16,10 +17,13 @@ gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails', '~> 6.1'
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'rubocop-rails', '~> 2.9', '>= 2.9.1'
 end
 
 group :development do
+  gem 'annotate', '~> 3.1', '>= 3.1.1'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring'

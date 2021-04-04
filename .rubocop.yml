@@ -7,30 +7,31 @@ Rails:
 AllCops:
   NewCops: enable
   Exclude:
+    - bin/**/*
     - db/schema.rb
     - db/seeds.rb
-    - bin/**/*
     - node_modules/**/*
-
-Style/StringLiterals:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
 
 Layout/IndentationConsistency:
   EnforcedStyle: indented_internal_methods
   Exclude:
     - config/routes.rb
 
+Metrics/BlockLength:
+  Exclude:
+    - lib/tasks/*.rake
+    - spec/**/*.rb
+
 Rails/FilePath:
   Exclude:
   - config/environments/development.rb
 
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
 Style/BlockComments:
   Exclude:
     - spec/spec_helper.rb
-
-Metrics/BlockLength:
-  Exclude:
-    - spec/**/*.rb
