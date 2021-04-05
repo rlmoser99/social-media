@@ -17,8 +17,13 @@ Layout/IndentationConsistency:
   Exclude:
     - config/routes.rb
 
+Layout/LineLength:
+  Exclude:
+    - config/**/*.rb
+
 Metrics/BlockLength:
   Exclude:
+    - config/environments/development.rb
     - lib/tasks/*.rake
     - spec/**/*.rb
 
