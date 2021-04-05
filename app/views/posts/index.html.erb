@@ -1,0 +1,7 @@
+<h1>Post Index "Feed/Timeline"</h1>
+<%= render partial: 'form' %>
+
+<% @posts.each do |post| %>
+  <p><%= post.content %></p>
+  <p><em>~ <%= post.author.first_name %> <%= post.author.last_name %></em></p>
+<% end %>

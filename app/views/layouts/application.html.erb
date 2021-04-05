@@ -18,6 +18,7 @@
       <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
       <li><%= link_to "Sign Up - New Registration", new_user_registration_path %></li>
       <li><%= link_to "Edit Registration", edit_user_registration_path %></li>
+      <li><%= link_to "Posts Index", posts_path %></li>
     </ul>
     <%= yield %>
   </body>
