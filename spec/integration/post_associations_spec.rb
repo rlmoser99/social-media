@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "model associations" do
+RSpec.describe "post and user model associations" do
   # User
   let!(:amy) { create(:user) }
 

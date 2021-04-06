@@ -21,9 +21,18 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
-  has_many :posts, foreign_key: "author_id", dependent: :destroy, inverse_of: :author
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :posts, foreign_key: "author_id", inverse_of: :author, dependent: :destroy
+  has_many :friendship_requests, dependent: :destroy
+  has_many :requested_friendships,
+           class_name: "FriendshipRequest",
+           foreign_key: "requested_friend_id",
+           inverse_of: "requested_friend",
+           dependent: :destroy
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships, source: :friend
 end
