@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   root to: "users#show"
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :posts, only: %i[index new create]
+  resources :users, only: %i[index show new create]
+  resources :users do
+    resources :friendship_requests, only: %i[new create]
+  end
 end
