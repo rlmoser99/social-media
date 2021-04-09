@@ -6,20 +6,15 @@ class UsersController < ApplicationController
   def index
     @sent_requests = current_user.friendship_requests.includes([:requested_friend])
     @received_requests = current_user.requested_friendships.includes([:user])
-    @other_users = find_other_users
+    @other_users = find_other_users(@sent_requests, @received_requests)
     @friendship_request_statuses = friendship_request_status_options
   end
 
   private
 
-    def find_other_users
-      User.all.reject { |user| user == current_user || current_requested_friends.include?(user) }
-    end
-
-    def current_requested_friends
-      sent = current_user.friendship_requests.includes([:requested_friend]).map(&:requested_friend)
-      received = current_user.requested_friendships.includes([:user]).map(&:user)
-      sent + received
+    def find_other_users(sent_requests, received_requests)
+      request_ids = sent_requests.map(&:requested_friend_id) + received_requests.map(&:user_id)
+      User.all.reject { |user| request_ids.include?(user.id) || user == current_user }
     end
 
     def friendship_request_status_options
