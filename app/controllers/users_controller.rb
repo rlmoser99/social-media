@@ -17,8 +17,8 @@ class UsersController < ApplicationController
     end
 
     def current_requested_friends
-      sent = current_user.friendship_requests.map(&:requested_friend)
-      received = current_user.requested_friendships.map(&:user)
+      sent = current_user.friendship_requests.includes([:requested_friend]).map(&:requested_friend)
+      received = current_user.requested_friendships.includes([:user]).map(&:user)
       sent + received
     end
 
