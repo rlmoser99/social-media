@@ -20,6 +20,7 @@ class FriendshipRequestsController < ApplicationController
   def update
     return unless @friendship_request.update(friendship_request_params)
 
+    FriendshipManager.new(@friendship_request, friendship_request_params[:status]).call
     flash[:notice] = "Your friendship request has been updated."
     redirect_back fallback_location: users_path
   end
