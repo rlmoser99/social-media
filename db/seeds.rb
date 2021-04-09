@@ -46,6 +46,8 @@ users = [
   end
 ]
 
-users.permutation(2) do |pair|
+users.repeated_combination(2).to_a.each do |pair|
+  next if pair[0] == pair[1]
+
   FriendshipRequest.find_or_create_by(user_id: pair[0].id, requested_friend_id: pair[1].id)
 end
