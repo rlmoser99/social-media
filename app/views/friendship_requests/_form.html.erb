@@ -1,6 +1,0 @@
-<%= form_with url: user_friendship_requests_path do |f| %>
-  <p><%= @user.email %></p>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.hidden_field :requested_friend_id, :value => params[:user_id] %>
-  <%= f.submit "Request Friendship" %>
-<% end %>

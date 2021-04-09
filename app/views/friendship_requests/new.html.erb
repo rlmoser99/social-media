@@ -1,2 +1,7 @@
 <h1>New Friendship Request</h1>
-<%= render partial: 'form' %>
+<%= form_with model: @friendship_request do |f| %>
+  <p>Want to be friends with <%= @friend.email %>?</p>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :requested_friend_id, :value => params[:requested_friend_id] %>
+  <%= f.submit "Request Friendship" %>
+<% end %>

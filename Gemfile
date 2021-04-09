@@ -25,6 +25,7 @@ end
 
 group :development do
   gem 'annotate', '~> 3.1', '>= 3.1.1'
+  gem 'bullet', '~> 6.1', '>= 6.1.4'
   gem 'guard-livereload', '~> 2.5', '>= 2.5.2', require: false
   gem 'guard-rspec', '~> 4.7', '>= 4.7.3', require: false
   gem 'listen', '~> 3.3'

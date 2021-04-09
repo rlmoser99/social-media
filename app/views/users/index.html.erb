@@ -1,13 +1,25 @@
 <h1>User Index Page</h1>
+
 <h2>Friends</h2>
-<% @friends.each do |friend| %>
+<% @sent_requests.each do |request| %>
   <p>
-    <%= friend.email %>
+    <%= request.requested_friend.email %>
+    <%= request.status %>
+    <%= button_to "Delete Request", friendship_request_path(request), method: :delete, data: { confirm: "Are you sure?" } %>
   </p>
 <% end %>
+
+<% @received_requests.each do |request| %>
+  <p>
+    <%= request.user.email %>
+    <%= request.status %>
+    <%= link_to 'Go to Friend Request', edit_friendship_request_path(request) %>
+  </p>
+<% end %>
+
 <h2>Find New Friends</h2>
 <% @other_users.each do |user| %>
   <p>
-    <%= user.email%> <%= link_to "Go to Friend Request", new_user_friendship_request_path(user) %>
+    <%= user.email%> <%= button_to "Go to Friend Request", new_friendship_request_path, method: :get, params: { requested_friend_id: user.id } %>
   </p>
 <% end %>
