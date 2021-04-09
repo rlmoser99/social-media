@@ -1,8 +1,0 @@
-<h1>Edit Friendship Request</h1>
-<%= form_with model: @friendship_request do |f| %>
-  <p>
-    <%= @friendship_request.user.email %> wants to be friends with: <%= @friendship_request.requested_friend.email %>
-  </p>
-  <%= f.select :status, @status_options %>
-  <%= f.submit "Update Friendship" %>
-<% end %>

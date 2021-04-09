@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @sent_requests = current_user.friendship_requests.includes([:requested_friend])
     @received_requests = current_user.requested_friendships.includes([:user])
     @other_users = find_other_users
+    @friendship_request_statuses = friendship_request_status_options
   end
 
   private
@@ -19,5 +20,11 @@ class UsersController < ApplicationController
       sent = current_user.friendship_requests.map(&:requested_friend)
       received = current_user.requested_friendships.map(&:user)
       sent + received
+    end
+
+    def friendship_request_status_options
+      FriendshipRequest.statuses.filter_map do |k, _v|
+        k unless k == "pending"
+      end
     end
 end

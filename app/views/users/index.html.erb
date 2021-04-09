@@ -13,13 +13,15 @@
   <p>
     <%= request.user.email %>
     <%= request.status %>
-    <%= link_to 'Go to Friend Request', edit_friendship_request_path(request) %>
+    <% @friendship_request_statuses.each do |status| %>
+      <%= button_to "#{status.capitalize}", friendship_request_path(request), method: :patch, params: { status: "#{status}" } %>
+    <% end %>
   </p>
 <% end %>
 
 <h2>Find New Friends</h2>
 <% @other_users.each do |user| %>
   <p>
-    <%= user.email%> <%= button_to "Go to Friend Request", new_friendship_request_path, method: :get, params: { requested_friend_id: user.id } %>
+    <%= user.email%> <%= button_to "Add Friend", friendship_requests_path, method: :post, params: { requested_friend_id: user.id } %>
   </p>
 <% end %>
