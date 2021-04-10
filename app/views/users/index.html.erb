@@ -2,26 +2,32 @@
 
 <h2>Friends</h2>
 <% @sent_requests.each do |request| %>
-  <p>
+  <div class="friend-container">
     <%= request.requested_friend.email %>
-    <%= request.status %>
-    <%= button_to "Delete Request", friendship_request_path(request), method: :delete, data: { confirm: "Are you sure?" } %>
-  </p>
+    <% if request.status == "pending" %>
+      <%= button_to "Delete Request", friendship_request_path(request), method: :delete, data: { confirm: "Are you sure?" }, form_class: "btn-friendship" %>
+    <% else %>
+      <% @friendship_request_statuses.each do |status| %>
+        <% next if request.status == status %>
+        <%= button_to "#{status.capitalize}", friendship_request_path(request), method: :patch, params: { status: "#{status}" }, form_class: "btn-friendship" %>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
 
 <% @received_requests.each do |request| %>
-  <p>
+  <div class="friend-container">
     <%= request.user.email %>
-    <%= request.status %>
     <% @friendship_request_statuses.each do |status| %>
-      <%= button_to "#{status.capitalize}", friendship_request_path(request), method: :patch, params: { status: "#{status}" } %>
+      <% next if request.status == status %>
+      <%= button_to "#{status.capitalize}", friendship_request_path(request), method: :patch, params: { status: "#{status}" }, form_class: "btn-friendship" %>
     <% end %>
-  </p>
+  </div>
 <% end %>
 
 <h2>Find New Friends</h2>
 <% @other_users.each do |user| %>
-  <p>
-    <%= user.email%> <%= button_to "Add Friend", friendship_requests_path, method: :post, params: { requested_friend_id: user.id } %>
-  </p>
+  <div class="friend-container">
+    <%= user.email%> <%= button_to "Add Friend", friendship_requests_path, method: :post, params: { requested_friend_id: user.id }, form_class: "btn-friendship" %>
+  </div>
 <% end %>
