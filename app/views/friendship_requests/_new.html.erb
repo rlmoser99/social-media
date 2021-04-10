@@ -1,0 +1,3 @@
+<div class="friend-container">
+  <%= user.email%> <%= button_to "Add Friend", friendship_requests_path, method: :post, params: { requested_friend_id: user.id }, form_class: "btn-friendship" %>
+</div>

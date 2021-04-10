@@ -2,32 +2,21 @@
 
 <h2>Friends</h2>
 <% @sent_requests.each do |request| %>
-  <div class="friend-container">
-    <%= request.requested_friend.email %>
-    <% if request.status == "pending" %>
-      <%= button_to "Delete Request", friendship_request_path(request), method: :delete, data: { confirm: "Are you sure?" }, form_class: "btn-friendship" %>
-    <% else %>
-      <% @friendship_request_statuses.each do |status| %>
-        <% next if request.status == status %>
-        <%= button_to "#{status.capitalize}", friendship_request_path(request), method: :patch, params: { status: "#{status}" }, form_class: "btn-friendship" %>
-      <% end %>
-    <% end %>
-  </div>
+  <% if request.status == "pending" %>
+    <%= render partial: 'friendship_requests/destroy', locals: { request: request } %>
+  <% else %>
+    <%= render partial: 'friendship_requests/show',
+                locals: { request: request,
+                          friendship_request_statuses: @friendship_request_statuses } %>
+  <% end %>
 <% end %>
 
-<% @received_requests.each do |request| %>
-  <div class="friend-container">
-    <%= request.user.email %>
-    <% @friendship_request_statuses.each do |status| %>
-      <% next if request.status == status %>
-      <%= button_to "#{status.capitalize}", friendship_request_path(request), method: :patch, params: { status: "#{status}" }, form_class: "btn-friendship" %>
-    <% end %>
-  </div>
-<% end %>
+<%= render partial: 'friendship_requests/show',
+           collection: @received_requests,
+           as: :request,
+           locals: { friendship_request_statuses: @friendship_request_statuses } %>
 
 <h2>Find New Friends</h2>
-<% @other_users.each do |user| %>
-  <div class="friend-container">
-    <%= user.email%> <%= button_to "Add Friend", friendship_requests_path, method: :post, params: { requested_friend_id: user.id }, form_class: "btn-friendship" %>
-  </div>
-<% end %>
+<%= render partial: 'friendship_requests/new',
+           collection: @other_users,
+           as: :user %>
