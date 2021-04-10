@@ -49,5 +49,8 @@ users = [
 users.repeated_combination(2).to_a.each do |pair|
   next if pair[0] == pair[1]
 
-  FriendshipRequest.find_or_create_by(user_id: pair[0].id, requested_friend_id: pair[1].id)
+  request = FriendshipRequest.find_or_create_by(user_id: pair[0].id, requested_friend_id: pair[1].id)
+  request.update(status: "accepted")
+  Friendship.find_or_create_by(user_id: pair[0].id, friend_id: pair[1].id)
+  Friendship.find_or_create_by(user_id: pair[1].id, friend_id: pair[0].id)
 end
