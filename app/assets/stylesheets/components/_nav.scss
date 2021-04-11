@@ -1,0 +1,9 @@
+nav > ul {
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+
+  * > { flex: 0 1 auto; }
+}

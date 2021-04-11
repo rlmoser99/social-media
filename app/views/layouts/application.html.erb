@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,22 +14,9 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <% if current_user %>
-      <p>
-        User: <%= current_user.email %>
-      </p>
-    <% end %>
-    <ul>
-      <li><%= link_to "Log In", new_user_session_path %></li>
-      <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
-      <li><%= link_to "Sign Up", new_user_registration_path %></li>
-      <li><%= link_to "Edit Registration", edit_user_registration_path %></li>
-      <li><%= link_to "Posts Index", posts_path %></li>
-      <% if current_user %>
-          <li><%= link_to "User Show", user_path(current_user) %></li>
-      <% end %>
-      <li><%= link_to "User Index", users_path %></li>
-    </ul>
+
+    <%= render partial: 'shared/nav' %>
+
     <%= yield %>
   </body>
 </html>
