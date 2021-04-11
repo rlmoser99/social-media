@@ -1,0 +1,7 @@
+<h1>Notification Index Page</h1>
+
+<% if @notifications %>
+  <% @notifications.each do |notification| %>
+    <%= notification.friendship_request.user.email %> has sent you a friend request.
+  <% end %>
+<% end %>

@@ -35,4 +35,5 @@ class User < ApplicationRecord
            dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships, source: :friend
+  has_many :notifications, foreign_key: "recipient_id", inverse_of: :recipient, dependent: :destroy
 end

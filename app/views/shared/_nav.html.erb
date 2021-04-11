@@ -3,7 +3,7 @@
     <% if current_user %>
       <li><%= link_to posts_path, title: "News Feed" do %><span class="material-icons">public</span><% end %></li>
       <li><%= link_to users_path, title: "Friends" do %><span class="material-icons">people</span><% end %></li>
-      <li><%= link_to root_path, title: "Notifications" do %><span class="material-icons">notifications</span><% end %></li>
+      <li><%= link_to notifications_path, title: "Notifications" do %><span class="material-icons">notifications</span><% end %></li>
       <li><%= link_to user_path(current_user), title: "User Account" do %><span class="material-icons">manage_accounts</span><% end %></li>
       <li><%= link_to destroy_user_session_path, method: :delete, title: "Log Out" do %><span class="material-icons">logout</span><% end %></li>
     <% else %>
