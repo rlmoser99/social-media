@@ -7,14 +7,17 @@
   <% else %>
     <%= render partial: 'friendship_requests/show',
                 locals: { request: request,
+                          inverse_friend: request.requested_friend,
                           friendship_request_statuses: @friendship_request_statuses } %>
   <% end %>
 <% end %>
 
-<%= render partial: 'friendship_requests/show',
-           collection: @received_requests,
-           as: :request,
-           locals: { friendship_request_statuses: @friendship_request_statuses } %>
+<% @received_requests.each do |request| %>
+  <%= render partial: 'friendship_requests/show',
+             locals: { request: request,
+                       inverse_friend: request.user,
+                       friendship_request_statuses: @friendship_request_statuses } %>
+<% end %>
 
 <h2>Find New Friends</h2>
 <%= render partial: 'friendship_requests/new',
