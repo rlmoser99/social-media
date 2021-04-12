@@ -7,3 +7,14 @@ nav > ul {
 
   * > { flex: 0 1 auto; }
 }
+
+.notification-count {
+  background-color: maroon;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  left: -1rem;
+  padding: .2rem .4rem;
+  position: relative;
+  top: -1rem;
+}

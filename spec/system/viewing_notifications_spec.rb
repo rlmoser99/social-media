@@ -3,8 +3,8 @@
 require "rails_helper"
 
 RSpec.describe "user recieves a notification from friend request", type: :system do
-  let!(:amy) { create(:user, email: 'amy@example.com') }
-  let!(:beth) { create(:user, email: 'beth@example.com') }
+  let!(:amy) { create(:user, first_name: "Amy", last_name: "Abbott") }
+  let!(:beth) { create(:user, first_name: "Beth", last_name: "Baker") }
 
   before do
     sign_in(amy)
@@ -14,8 +14,23 @@ RSpec.describe "user recieves a notification from friend request", type: :system
   end
 
   it "shows a notification for a friendship request" do
+    beth.reload
     sign_in(beth)
+    visit(root_path)
+    within(".notification-count") do
+      expect(page).to have_content(1)
+    end
     visit(notifications_path)
-    expect(page).to have_content('amy@example.com has sent you a friend request.')
+    expect(page).to have_content('Amy Abbott sent a friend request.')
+  end
+
+  context "after viewing notifications" do
+    it "removes notification" do
+      beth.reload
+      sign_in(beth)
+      visit(notifications_path)
+      visit(users_path)
+      expect(page).not_to have_selector(".notification-count")
+    end
   end
 end

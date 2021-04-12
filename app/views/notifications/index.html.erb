@@ -1,7 +1,25 @@
 <h1>Notification Index Page</h1>
 
 <% if @notifications %>
+
   <% @notifications.each do |notification| %>
-    <%= notification.friendship_request.user.email %> has sent you a friend request.
+
+    <% if notification.read_at.nil? %>
+      <p>
+        <strong>
+          <%= notification.friendship_request.user.full_name %> sent a friend request.
+        </strong>
+      </p>
+      <%= render partial: 'friendship_requests/show',
+                 locals: { request: notification.friendship_request,
+                           inverse_friend: notification.friendship_request.user,
+                           friendship_request_statuses: @friendship_request_statuses } %>
+    <% else %>
+      <p>
+        <%= notification.friendship_request.user.full_name %> sent a friend request.
+      </p>
+    <% end %>
+
   <% end %>
+
 <% end %>
