@@ -15,6 +15,10 @@
       </div>
       <p><%= post.content %></p>
       <%= render partial: 'likes/new', locals: { post: post } %>
+      <% post.comments&.each do |comment| %>
+        <%= render partial: 'comments/show', locals: { comment: comment } %>
+      <% end %>
+      <%= render partial: 'comments/new', locals: { post: post } %>
     </div>
   <% end %>
 <% end %>

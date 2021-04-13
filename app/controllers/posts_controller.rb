@@ -2,7 +2,8 @@
 
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.includes([:author]).sort_by(&:created_at).reverse
+    @posts = Post.where(author_id: current_user.friends)
+                 .includes([:author, { comments: [:author] }]).sort_by(&:created_at).reverse
   end
 
   def new

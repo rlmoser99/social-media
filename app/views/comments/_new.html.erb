@@ -1,0 +1,10 @@
+<%= form_with scope: :comment, url: comments_path, params: { post: post } do |f| %>
+  <%= f.hidden_field :post_id, :value => post.id %>
+
+  <div class="field">
+    <%= f.label "New Comment:" %><br />
+    <%= f.text_area :content %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
