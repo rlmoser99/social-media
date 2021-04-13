@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show new create]
   resources :friendship_requests, only: %i[new create edit update destroy]
   resources :notifications, only: %i[index]
+  resources :likes, only: %i[new create]
 end

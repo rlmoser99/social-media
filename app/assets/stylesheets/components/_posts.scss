@@ -1,0 +1,28 @@
+.post-container {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+
+  * > { flex: 0 1 auto; }
+}
+
+.like-summary {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 5px;
+
+  * > { flex: 0 1 auto; }
+
+  span {
+    margin-left: 5px;
+  }
+}

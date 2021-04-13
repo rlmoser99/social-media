@@ -3,7 +3,18 @@
 
 <% if @posts %>
   <% @posts.each do |post| %>
-    <p><%= post.content %></p>
-    <p><em>~ <%= post.author.first_name %> <%= post.author.last_name %></em></p>
+    <div class="post-container">
+      <div class="post-header">
+        <p><strong><%= post.author.full_name %></strong></p>
+        <div class="like-summary">
+          <% if post.likes_count > 0 %>
+            <%= post.likes_count %>
+            <span class="material-icons">thumb_up</span>
+          <% end %>
+        </div>
+      </div>
+      <p><%= post.content %></p>
+      <%= render partial: 'likes/new', locals: { post: post } %>
+    </div>
   <% end %>
 <% end %>

@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.includes([:author])
+    @posts = Post.all.includes([:author]).sort_by(&:created_at).reverse
   end
 
   def new

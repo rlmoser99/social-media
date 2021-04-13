@@ -1,0 +1,7 @@
+<div class="like-container">
+  <%#= button_to "Like", likes_path, method: :post, params: { post_id: post.id }, form_class: "btn-like" %>
+  <%= button_to likes_path, method: :post, params: { post_id: post.id }, form_class: "btn-like" do %>
+    <span class="material-icons">add</span>
+    <span class="material-icons">thumb_up</span>
+  <% end %>
+</div>

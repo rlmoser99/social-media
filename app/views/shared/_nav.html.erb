@@ -1,7 +1,7 @@
 <nav>
   <ul>
     <% if current_user %>
-      <li><%= link_to posts_path, title: "News Feed" do %><span class="material-icons">public</span><% end %></li>
+      <li><%= link_to posts_path, title: "News Feed" do %><span class="material-icons">chat</span><% end %></li>
       <li><%= link_to users_path, title: "Friends" do %><span class="material-icons">people</span><% end %></li>
       <li>
         <%= link_to notifications_path, title: "Notifications" do %><span class="material-icons">notifications</span><% end %>
