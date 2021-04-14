@@ -2,6 +2,6 @@
   <%= inverse_friend.email %>
   <% friendship_request_statuses.each do |status| %>
     <% next if request.status == status %>
-    <%= button_to "#{request.change_status_label[status.to_sym]}", friendship_request_path(request), method: :patch, params: { status: "#{status}" }, form_class: "btn-friendship" %>
+    <%= button_to "#{request.change_status_label[status.to_sym]}", friendship_request_path(request), method: :patch, params: { status: "#{status}" }, form_class: "form-button" %>
   <% end %>
 </div>

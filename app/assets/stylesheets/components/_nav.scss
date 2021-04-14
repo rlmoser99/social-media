@@ -1,20 +1,10 @@
 nav > ul {
-  border-bottom: 1px solid black;
+  background-color: $color-accent;
+  color: $color-white;
   display: flex;
   justify-content: space-around;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing);
   padding: 1rem 0;
 
   * > { flex: 0 1 auto; }
-}
-
-.notification-count {
-  background-color: maroon;
-  border-radius: 50%;
-  color: white;
-  font-size: 12px;
-  left: -1rem;
-  padding: .2rem .4rem;
-  position: relative;
-  top: -1rem;
 }

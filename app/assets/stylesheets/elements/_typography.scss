@@ -1,0 +1,12 @@
+a {
+  color: $color-white;
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+h1,
+h2 {
+  color: $color-white;
+}

@@ -1,0 +1,12 @@
+// Top Right of each post
+.like-count {
+  align-items: center;
+  display: flex;
+  font-size: 1.2rem;
+
+  * > { flex: 0 1 auto; }
+
+  span {
+    margin-left: calc(var(--spacing) / 2);
+  }
+}

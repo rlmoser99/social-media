@@ -1,4 +1,7 @@
 body {
-  background-color: $color-background;
-  margin: 15px;
+  background-color: $color-primary;
+  color: $color-primary;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }

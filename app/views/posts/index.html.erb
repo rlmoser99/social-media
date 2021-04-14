@@ -1,24 +1,28 @@
-<h1>Post Index "Feed/Timeline"</h1>
-<%= render partial: 'form' %>
+<div class="post">
+  <h1>Post Index "Feed/Timeline"</h1>
+  <%= render partial: 'form' %>
 
-<% if @posts %>
-  <% @posts.each do |post| %>
-    <div class="post-container">
-      <div class="post-header">
-        <p><strong><%= post.author.full_name %></strong></p>
-        <div class="like-summary">
-          <% if post.likes_count > 0 %>
-            <%= post.likes_count %>
-            <span class="material-icons">thumb_up</span>
+  <% if @posts %>
+    <% @posts.each do |post| %>
+      <div class="post-container">
+        <div class="post-header">
+          <p><strong><%= post.author.full_name %></strong></p>
+          <div class="like-count">
+            <% if post.likes_count > 0 %>
+              <%= post.likes_count %>
+              <span class="material-icons">thumb_up</span>
+            <% end %>
+          </div>
+        </div>
+        <p><%= post.content %></p>
+        <div class="post-actions">
+          <%= render partial: 'likes/new', locals: { post: post } %>
+          <% post.comments&.each do |comment| %>
+            <%= render partial: 'comments/show', locals: { comment: comment } %>
           <% end %>
+          <%= render partial: 'comments/new', locals: { post: post } %>
         </div>
       </div>
-      <p><%= post.content %></p>
-      <%= render partial: 'likes/new', locals: { post: post } %>
-      <% post.comments&.each do |comment| %>
-        <%= render partial: 'comments/show', locals: { comment: comment } %>
-      <% end %>
-      <%= render partial: 'comments/new', locals: { post: post } %>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
