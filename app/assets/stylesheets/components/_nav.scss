@@ -1,10 +1,14 @@
 nav > ul {
-  background-color: $color-accent;
+  background-color: $color-accent-blue;
   color: $color-white;
   display: flex;
   justify-content: space-around;
-  margin-bottom: var(--spacing);
   padding: 1rem 0;
 
   * > { flex: 0 1 auto; }
+}
+
+.nav-artwork {
+  background: url(asset_path("network-top-artwork.png")) bottom center / cover;
+  height: var(--accent-art-height);
 }

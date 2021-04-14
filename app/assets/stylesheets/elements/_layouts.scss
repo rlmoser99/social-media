@@ -1,7 +1,19 @@
+html {
+  height: 100%;
+}
+
 body {
   background-color: $color-primary;
   color: $color-primary;
-  max-width: 100%;
-  overflow-x: hidden;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  * > {flex: 0 1 auto;}
+}
+
+main {
+  flex: 1 0 auto;
+  margin: 0 var(--spacing);
+  min-height: auto;
 }

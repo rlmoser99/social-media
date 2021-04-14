@@ -1,10 +1,13 @@
-$color-accent: #459FCA;
+$color-accent-green: #97CA4D;
+$color-accent-blue: #17BED9;
 $color-primary: #333333;
-$color-transparent: rgba(255, 255, 255 , 0.75);
-$color-white: #eeeeee;
+$color-dark-blue: #0082C9;
+$color-primary-light:#C2C2C2;
+$color-white: #ffffff;
 
 $border-radius: 7px;
 
 :root {
   --spacing: 1rem;
+  --accent-art-height: 4rem;
 }

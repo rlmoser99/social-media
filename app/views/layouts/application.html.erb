@@ -17,8 +17,10 @@
 
     <%= render partial: 'shared/nav' %>
 
-    <%= image_tag('circuit-artwork.png', height: 'auto', width: '100%', class: "background-image") %>
+    <main>
+      <%= yield %>
+    </main>
 
-    <%= yield %>
+    <%= render partial: 'shared/footer' %>
   </body>
 </html>
