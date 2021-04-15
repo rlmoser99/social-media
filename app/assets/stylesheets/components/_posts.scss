@@ -1,9 +1,11 @@
 .post {
-  margin: 0 var(--spacing);
 
-  &-new,
+  &-form {
+    @include text-form($color-accent-blue);
+  }
+
   &-container {
-    background-color: $color-primary-light;
+    border: 3px solid #444444;
     border-radius: $border-radius;
     margin: var(--spacing) 0;
     padding: var(--spacing);
@@ -15,10 +17,26 @@
   
     * > { flex: 0 1 auto; }
   }
+  
+  &-content {
+    padding: 1rem 0;
+  }
+}
 
-  &-actions {
-    .form-button {
-      margin-top: var(--spacing);
+.header-profile {
+  display: flex;
+
+  * > { flex: 0 1 auto; }
+
+  .profile-picture {
+    @include profile-picture($color-accent-blue);
+  }
+  
+  .header-content {
+    margin-left: 1rem;
+  
+    strong {
+      color: $color-accent-blue;
     }
   }
 }

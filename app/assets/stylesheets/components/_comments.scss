@@ -1,8 +1,28 @@
 .comment {
+
+  &-form {
+    @include text-form($color-accent-green);
+  }
+
   &-container {
-    border: 1px solid $color-primary;
-    border-radius: $border-radius;
-    margin: var(--spacing);
-    padding: var(--spacing);
+    background-color: #444444;
+    border-left: 3px solid $color-accent-green;
+    display: flex;
+    margin: var(--spacing) 0;
+    padding: 5px var(--spacing);
+
+    * > { flex: 0 1 auto; }
+
+    .profile-picture {
+      @include profile-picture($color-accent-green);
+    }
+  }
+
+  &-content {
+    margin-left: 1rem;
+
+    strong {
+      color: $color-accent-green;
+    }
   }
 }

@@ -1,12 +1,17 @@
 <div class="post">
-  <h1>Post Index "Feed/Timeline"</h1>
   <%= render partial: 'form' %>
 
   <% if @posts %>
     <% @posts.each do |post| %>
       <div class="post-container">
         <div class="post-header">
-          <p><strong><%= post.author.full_name %></strong></p>
+          <div class="header-profile">
+            <span class="material-icons profile-picture">account_circle</span>
+            <div class="header-content">
+              <p><strong><%= post.author.full_name %></strong></p>
+              <p><small><%= time_ago_in_words(post.created_at) %> ago</small></p>
+            </div>
+          </div>
           <div class="like-count">
             <% if post.likes_count > 0 %>
               <%= post.likes_count %>
@@ -14,7 +19,7 @@
             <% end %>
           </div>
         </div>
-        <p><%= post.content %></p>
+        <p class="post-content"><%= post.content %></p>
         <div class="post-actions">
           <%= render partial: 'likes/new', locals: { post: post } %>
           <% post.comments&.each do |comment| %>

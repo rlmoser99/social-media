@@ -4,8 +4,9 @@ html {
 
 body {
   background-color: $color-primary;
-  color: $color-primary;
+  color: $color-white;
   display: flex;
+  font-family: $font-primary;
   flex-direction: column;
   height: 100%;
 

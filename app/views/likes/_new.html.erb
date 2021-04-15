@@ -1,4 +1,6 @@
-<%= button_to likes_path, method: :post, params: { post_id: post.id }, form_class: "form-button" do %>
-  <span class="material-icons">add</span>
-  <span class="material-icons">thumb_up</span>
-<% end %>
+<div class="like-form">
+  <%= button_to likes_path, method: :post, params: { post_id: post.id }, form_class: "form-button" do %>
+    <span class="material-icons">add</span>
+    <span class="material-icons">thumb_up</span>
+  <% end %>
+</div>

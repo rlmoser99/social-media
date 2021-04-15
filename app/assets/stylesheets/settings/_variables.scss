@@ -1,11 +1,17 @@
 $color-accent-green: #97CA4D;
 $color-accent-blue: #17BED9;
 $color-primary: #333333;
-$color-dark-blue: #0082C9;
-$color-primary-light:#C2C2C2;
+$color-light-gray:#C2C2C2;
 $color-white: #ffffff;
 
-$border-radius: 7px;
+// Colors found in artwork & might be of use
+$color-dark-blue: #0082C9;
+$color-light-green: #70C490;
+$color-teal: #2EBFC7;
+
+$border-radius: 3px;
+
+$font-primary: 'Nunito Sans', sans-serif;
 
 :root {
   --spacing: 1rem;

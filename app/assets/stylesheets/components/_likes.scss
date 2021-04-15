@@ -1,6 +1,6 @@
-// Top Right of each post
 .like-count {
   align-items: center;
+  color: $color-accent-green;
   display: flex;
   font-size: 1.2rem;
 
@@ -8,5 +8,16 @@
 
   span {
     margin-left: calc(var(--spacing) / 2);
+  }
+}
+
+// Button to add a new like to post
+.like-form {
+  button {
+    background-color: $color-accent-green;
+    border: none;
+    border-radius: $border-radius;
+    color: $color-primary;
+    padding: .5rem;
   }
 }
