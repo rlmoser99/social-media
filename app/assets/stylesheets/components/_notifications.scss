@@ -1,11 +1,31 @@
-.notification {
-  &-count {
-    background-color: $color-primary-gray;
-    border-radius: 50%;
-    font-size: 12px;
-    left: -1rem;
-    padding: .2rem .4rem;
-    position: relative;
-    top: -1rem;
+// Nav Bar
+.notification-count {
+  background-color: $color-warning-red;
+  border-radius: $border-radius;
+  left: -.75rem;
+  padding: 0 .2rem;
+  position: relative;
+  top: -1rem;
+}
+
+// Notification Page
+.notification-summary {
+  p {
+    margin: calc(var(--spacing) / 2) 0;
   }
+
+  .friend-container {
+    @include user-container;
+  }
+
+  .friend-profile {
+    @include user-profile;
+
+    .profile-picture {
+      @include profile-picture($color-accent-green);
+    }
+  }
+
+  @include button-group;
+  @include button-form;
 }

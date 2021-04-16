@@ -1,0 +1,15 @@
+.user-container {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing) 0;
+
+  * > { flex: 0 1 auto; }
+
+  .account-info > p {
+    margin-bottom: var(--spacing);
+  }
+
+  .account-actions > a {
+    color: $color-accent-green;
+  }
+}

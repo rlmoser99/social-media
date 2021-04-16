@@ -1,3 +1,45 @@
+@mixin button-form {
+  form > input {
+    background-color: $color-primary-gray;
+    border: 2px solid $color-accent-green;
+    color: $color-accent-green;
+    margin-top: 1rem;
+    width: 100%;
+
+    &:hover {
+      background-color: $color-accent-green;
+      color: $color-primary-gray;
+    }
+
+    &:disabled {
+      background-color: $color-primary-gray;
+      color: $color-accent-green;
+      opacity: .25;
+    }
+  }
+}
+
+@mixin button-group {
+  .btn-group {
+    display: flex;
+
+    * > { flex: 0 1 auto; }
+
+    form {
+      margin: 0 calc(var(--spacing) / 2);
+      width: 100%;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
 @mixin profile-picture($color) {
   border: 1px dashed $color;
   border-radius: 50%;
@@ -31,5 +73,27 @@
       margin-left: var(--spacing);
       padding: calc(var(--spacing) / 2);
     }
+  }
+}
+
+@mixin user-container {
+  border: 2px solid $color-dark-gray;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing);
+  padding: var(--spacing);
+
+  * > { flex: 0 1 auto;}
+}
+
+@mixin user-profile {
+  align-items: center;
+  display: flex;
+
+  * > { flex: 0 1 auto; }
+
+  p {
+    margin-left: 1rem;
   }
 }

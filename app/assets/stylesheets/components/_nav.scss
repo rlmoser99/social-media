@@ -3,8 +3,12 @@ nav > ul {
   display: flex;
   justify-content: space-between;
   padding: 1rem var(--spacing);
-
+  
   * > { flex: 0 1 auto; }
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .nav-artwork {

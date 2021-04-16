@@ -21,7 +21,9 @@ RSpec.describe "user recieves a notification from friend request", type: :system
       expect(page).to have_content(1)
     end
     visit(notifications_path)
-    expect(page).to have_content('Amy Abbott sent a friend request.')
+    within(".friend-container") do
+      expect(page).to have_content('Amy Abbott')
+    end
   end
 
   context "after viewing notifications" do

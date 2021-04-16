@@ -21,6 +21,9 @@
 
 <h2>Find New Friends</h2>
 <div class="friend">
+  <% if @other_users.empty? %>
+    <p>Invite your friends to join!</p>
+  <% end %>
   <%= render partial: 'friendship_requests/new',
             collection: @other_users,
             as: :user %>

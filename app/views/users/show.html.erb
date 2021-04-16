@@ -1,10 +1,11 @@
-<h1>User Show Page</h1>
-<% if current_user %>
-  <p>
-    Name: <%= current_user.first_name %> <%= current_user.last_name %>
-    <%= link_to edit_user_registration_path, title: "Edit Account" do %><span class="material-icons">edit</span><% end %>
-  </p>
-  <p>Email: <%= current_user.email %></p>
-<% else %>
-  <p>Please Sign Up or Log In</p>
-<% end %>
+<h2>Account Details</h2>
+
+<div class="user-container">
+  <div class="account-info">
+    <p>Name: <%= current_user.full_name %></p>
+    <p>Email: <%= current_user.email %></p>
+  </div>
+  <div class="account-actions">
+    <%= link_to "Edit Account", edit_user_registration_path %>
+  </div>
+</div>
