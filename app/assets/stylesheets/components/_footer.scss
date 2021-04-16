@@ -8,11 +8,16 @@ footer {
   ul {
     align-items: center;
     background-color: $color-accent-green;
-    color: #333333;
+    color: $color-primary-gray;
     display: flex;
     justify-content: space-between;
     padding: 1rem var(--spacing);
   
     * > { flex: 0 1 auto; }
+
+    // github icon
+    img {
+      opacity: .8;
+    }
   }
 }

@@ -5,7 +5,7 @@
   }
 
   &-container {
-    background-color: #444444;
+    background-color: $color-dark-gray;
     border-left: 3px solid $color-accent-green;
     display: flex;
     margin: var(--spacing) 0;

@@ -1,3 +1,10 @@
 .form-button {
   display: inline-block;
+  
+  input {
+    border: none;
+    border-radius: $border-radius;
+    color: $color-primary-gray;
+    padding: calc(var(--spacing) / 2);
+  }
 }

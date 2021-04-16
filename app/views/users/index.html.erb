@@ -1,25 +1,27 @@
-<h1>User Index Page</h1>
-
 <h2>Friends</h2>
-<% @sent_requests.each do |request| %>
-  <% if request.status == "pending" %>
-    <%= render partial: 'friendship_requests/destroy', locals: { request: request } %>
-  <% else %>
-    <%= render partial: 'friendship_requests/show',
-                locals: { request: request,
-                          inverse_friend: request.requested_friend,
-                          friendship_request_statuses: @friendship_request_statuses } %>
+<div class="friend">
+  <% @sent_requests.each do |request| %>
+    <% if request.status == "pending" %>
+      <%= render partial: 'friendship_requests/destroy', locals: { request: request } %>
+    <% else %>
+      <%= render partial: 'friendship_requests/show',
+                  locals: { request: request,
+                            inverse_friend: request.requested_friend,
+                            friendship_request_statuses: @friendship_request_statuses } %>
+    <% end %>
   <% end %>
-<% end %>
 
-<% @received_requests.each do |request| %>
-  <%= render partial: 'friendship_requests/show',
-             locals: { request: request,
-                       inverse_friend: request.user,
-                       friendship_request_statuses: @friendship_request_statuses } %>
-<% end %>
+  <% @received_requests.each do |request| %>
+    <%= render partial: 'friendship_requests/show',
+              locals: { request: request,
+                        inverse_friend: request.user,
+                        friendship_request_statuses: @friendship_request_statuses } %>
+  <% end %>
+</div>
 
 <h2>Find New Friends</h2>
-<%= render partial: 'friendship_requests/new',
-           collection: @other_users,
-           as: :user %>
+<div class="friend">
+  <%= render partial: 'friendship_requests/new',
+            collection: @other_users,
+            as: :user %>
+</div>

@@ -1,13 +1,16 @@
 .like-count {
   align-items: center;
-  color: $color-accent-green;
   display: flex;
-  font-size: 1.2rem;
 
   * > { flex: 0 1 auto; }
 
   span {
+    background-color: $color-dark-gray;
+    border-radius: 50%;
+    color: $color-accent-green;
+    font-size: 1.2rem;
     margin-left: calc(var(--spacing) / 2);
+    padding: 8px;
   }
 }
 
@@ -17,7 +20,7 @@
     background-color: $color-accent-green;
     border: none;
     border-radius: $border-radius;
-    color: $color-primary;
+    color: $color-primary-gray;
     padding: .5rem;
   }
 }
