@@ -1,0 +1,35 @@
+.registration-form {
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.field {
+  color: $color-accent-green;
+  margin-bottom: var(--spacing);
+
+  input {
+    width: 100%;
+    padding: .3rem;
+  }
+
+  input#user_remember_me {
+    width: auto;
+  }
+}
+
+// Should this be in a simple-button mixin?
+.actions > input {
+  background-color: $color-accent-green;
+  border: none;
+  border-radius: $border-radius;
+  color: $color-primary-gray;
+  padding: calc(var(--spacing) / 2);
+}
+
+.registration-tip {
+  margin: 1rem 0;
+
+  a {
+    color: $color-accent-green;
+  }
+}

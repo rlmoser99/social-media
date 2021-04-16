@@ -14,8 +14,12 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if flash[:notice]%>
+      <div class="flash flash-notice"><%= notice %></div>
+    <% end %>
+    <% if flash[:alert]%>
+      <div class="flash flash-alert"><%= alert %></div>
+    <% end %>
 
     <%= render partial: 'shared/nav' %>
 

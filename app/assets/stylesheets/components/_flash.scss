@@ -1,0 +1,11 @@
+.flash {
+  padding: .5rem 1rem;
+
+  &-notice {
+    background-color: $color-notice-blue;
+  }
+
+  &-alert {
+    background-color: $color-warning-red;
+  }
+}
