@@ -16,7 +16,55 @@ $border-radius: 3px;
 
 $font-primary: 'Nunito Sans', sans-serif;
 
+$phone: 425px;
+$tablet: 768px;
+$laptop: 1024px;
+$desktop: 1440px;
+$widescreen: 2880px;
+
 :root {
-  --spacing: 1rem;
   --accent-art-height: 4rem;
+  --accent-art-width: 100%;
+  --page-margin: 1rem;
+  --spacing: 1rem;
+}
+
+@media screen and (min-width: $phone) {
+	:root {
+    --accent-art-height: 5rem;
+    --accent-art-width: 500px;
+  }
+}
+
+@media screen and (min-width: $tablet) {
+	:root {
+    --accent-art-height: 6rem;
+    --accent-art-width: 600px;
+    --page-margin: 2rem;
+    --spacing: 2rem;
+  }
+}
+
+@media screen and (min-width: $laptop) {
+	:root {
+    --accent-art-height: 7rem;
+    --accent-art-width: 700px;
+    --page-margin: 150px;
+  }
+}
+
+@media screen and (min-width: $desktop) {
+	:root {
+    --accent-art-height: 8rem;
+    --accent-art-width: 800px;
+    --page-margin: 15vw;
+  }
+}
+
+@media screen and (min-width: $widescreen) {
+	:root {
+    --accent-art-height: 12rem;
+    --accent-art-width: 1200px;
+    --page-margin: 25vw;
+  }
 }

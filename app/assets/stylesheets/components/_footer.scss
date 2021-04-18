@@ -3,6 +3,8 @@ footer {
   .footer-artwork {
     background: url(asset_path("network-bottom-artwork.png")) top center / cover;
     height: calc(var(--accent-art-height) * 1.5);
+    margin: 0 auto;
+    max-width: var(--accent-art-width);
   }
   
   ul {
@@ -11,7 +13,7 @@ footer {
     color: $color-primary-gray;
     display: flex;
     justify-content: space-between;
-    padding: 1rem var(--spacing);
+    padding: 1rem var(--page-margin);
   
     * > { flex: 0 1 auto; }
 

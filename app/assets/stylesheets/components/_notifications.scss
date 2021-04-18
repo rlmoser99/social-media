@@ -16,6 +16,7 @@
 
   .friend-container {
     @include user-container;
+    max-width: 500px;
   }
 
   .friend-profile {

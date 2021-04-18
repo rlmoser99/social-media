@@ -2,7 +2,7 @@ nav > ul {
   background-color: $color-accent-blue;
   display: flex;
   justify-content: space-between;
-  padding: 1rem var(--spacing);
+  padding: 1rem var(--page-margin);
   
   * > { flex: 0 1 auto; }
 
@@ -14,4 +14,6 @@ nav > ul {
 .nav-artwork {
   background: url(asset_path("network-top-artwork.png")) bottom center / cover;
   height: var(--accent-art-height);
+  margin: 0 auto;
+  max-width: var(--accent-art-width);
 }
