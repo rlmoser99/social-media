@@ -23,8 +23,9 @@
 <div class="friend">
   <% if @other_users.empty? %>
     <p>Invite your friends to join!</p>
+  <% else %>
+    <%= render partial: 'friendship_requests/new',
+              collection: @other_users,
+              as: :user %>
   <% end %>
-  <%= render partial: 'friendship_requests/new',
-            collection: @other_users,
-            as: :user %>
 </div>
