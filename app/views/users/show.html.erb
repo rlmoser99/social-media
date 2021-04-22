@@ -3,8 +3,8 @@
 <div class="user-container">
   <div class="account-info">
     <div class="account-header">
-      <% if @user.avatar_url %>
-        <span class="profile-picture"><%= image_tag @user.avatar.thumb.url %></span>
+      <% if @user.avatar.attached? %>
+        <span class="profile-picture"><%= cl_image_tag @user.avatar.key, width: 87, crop: "fill" %></span>
       <% else %>
         <span class="material-icons profile-picture">account_circle</span>
       <% end %>

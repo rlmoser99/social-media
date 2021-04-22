@@ -47,8 +47,10 @@
     * > { flex: 0 1 auto;}
 
     .profile-picture img {
-      border-radius: 50%;
+      border: 1px dashed $color-accent-blue;
       margin-right: 1rem;
+      padding: 5px;
+      border-radius: 50%;
     }
   }
 
