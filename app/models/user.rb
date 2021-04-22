@@ -5,6 +5,7 @@
 # Table name: users
 #
 #  id                         :bigint           not null, primary key
+#  avatar                     :string
 #  email                      :string           default(""), not null
 #  encrypted_password         :string           default(""), not null
 #  first_name                 :string
@@ -39,6 +40,8 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: "recipient_id", inverse_of: :recipient, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, foreign_key: "author_id", inverse_of: :author, dependent: :destroy
+
+  mount_uploader :avatar, AvatarUploader
 
   def full_name
     "#{first_name} #{last_name}"

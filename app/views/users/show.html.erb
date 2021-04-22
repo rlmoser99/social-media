@@ -2,10 +2,27 @@
 
 <div class="user-container">
   <div class="account-info">
-    <p>Name: <%= current_user.full_name %></p>
-    <p>Email: <%= current_user.email %></p>
-  </div>
-  <div class="account-actions">
+    <div class="account-header">
+      <% if @user.avatar_url %>
+        <span class="profile-picture"><%= image_tag @user.avatar.thumb.url %></span>
+      <% else %>
+        <span class="material-icons profile-picture">account_circle</span>
+      <% end %>
+      <p><%= current_user.full_name %></p>
+    </div>
+    <p><%= current_user.email %></p>
+    
+
+    <%= form_with model: @user do |f| %>
+
+      <div class="field">
+        <%= f.label "Add or Update Avatar" %><br />
+        <%= f.file_field :avatar, required: true %>
+      </div>
+
+      <%= f.submit %>
+    <% end %>
+
     <%= link_to "Edit Account", edit_user_registration_path %>
   </div>
 </div>

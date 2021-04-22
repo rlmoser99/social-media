@@ -1,15 +1,58 @@
 .user-container {
-  display: flex;
-  justify-content: space-between;
   padding: var(--spacing) 0;
 
   * > { flex: 0 1 auto; }
 
-  .account-info > p {
-    margin-bottom: var(--spacing);
+  .account-info {
+
+    form {
+      margin-top: 1rem;
+    }
+
+    label {
+      color: $color-white;
+    }
+
+    input {
+      color: $color-accent-blue;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    input[type=file]::file-selector-button {
+      background-color: $color-primary-gray;
+      border: 2px solid $color-accent-blue;
+      border-radius: $border-radius;
+      color: $color-accent-blue;
+      cursor: pointer;
+      padding: calc(var(--spacing) / 4);
+    }
+
+    input[type="submit"] {
+      background-color: $color-accent-blue;
+      border: none;
+      border-radius: $border-radius;
+      color: $color-primary-gray;
+      margin-bottom: 1rem;
+      padding: calc(var(--spacing) / 2);
+    }
   }
 
-  .account-actions > a {
-    color: $color-accent-green;
+  .account-header {
+    align-items: center;
+    display: flex;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+
+    * > { flex: 0 1 auto;}
+
+    .profile-picture img {
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
+  }
+
+  a {
+    color: $color-accent-blue;
   }
 }
