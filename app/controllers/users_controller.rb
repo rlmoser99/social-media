@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-
   def index
     @sent_requests = current_user.friendship_requests.includes([:requested_friend])
     @received_requests = current_user.requested_friendships.includes([:user])

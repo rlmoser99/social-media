@@ -21,12 +21,24 @@ Layout/LineLength:
   Exclude:
     - config/**/*.rb
 
+Metrics/AbcSize:
+  Exclude:
+  - db/migrate/*.rb
+
 Metrics/BlockLength:
   Exclude:
     - Guardfile
     - config/environments/development.rb
     - lib/tasks/*.rake
     - spec/**/*.rb
+
+Metrics/MethodLength:
+  Exclude:
+  - db/migrate/*.rb
+
+Rails/CreateTableWithTimestamps:
+  Exclude:
+  - db/migrate/*.rb
 
 Rails/FilePath:
   Exclude:

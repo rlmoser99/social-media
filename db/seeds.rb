@@ -12,7 +12,7 @@ users = [
     user.password = "serenity"
     user.password_confirmation = "serenity"
   end,
-  zoe = User.find_or_create_by(first_name: "Zoë", last_name: "Washburne", email: "zoe@firefly.net") do |user|
+  zoe = User.find_or_create_by(first_name: "Zoe", last_name: "Washburne", email: "zoe@firefly.net") do |user|
     user.password = "serenity"
     user.password_confirmation = "serenity"
   end,
@@ -45,6 +45,13 @@ users = [
     user.password_confirmation = "serenity"
   end
 ]
+
+users.each do |user|
+  return if user.avatar.attached?
+
+  filename = "#{user.first_name}.jpeg"
+  user.avatar.attach(io: File.open("app/assets/images/seed_avatars/#{filename}"), filename: "#{filename}", content_type: 'image/jpeg')
+end
 
 users.repeated_combination(2).to_a.each do |pair|
   next if pair[0] == pair[1]
