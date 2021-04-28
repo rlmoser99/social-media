@@ -6,7 +6,14 @@
   .account-info {
 
     form {
+      display: flex;
+      flex-direction: column;
       margin-top: 1rem;
+      max-width: 450px;
+
+      @include container-outline;
+
+      * > { flex: 0 1 auto; }
     }
 
     label {
@@ -25,6 +32,7 @@
       border-radius: $border-radius;
       color: $color-accent-blue;
       cursor: pointer;
+      margin-top: 1rem;
       padding: calc(var(--spacing) / 4);
     }
 
@@ -33,8 +41,13 @@
       border: none;
       border-radius: $border-radius;
       color: $color-primary-gray;
-      margin-bottom: 1rem;
+      margin-top: 1rem;
       padding: calc(var(--spacing) / 2);
+    }
+
+    input[type=file]:hover::file-selector-button {
+      background-color: $color-accent-blue;
+      color: $color-primary-gray;
     }
   }
 
@@ -43,7 +56,7 @@
     display: flex;
     font-size: 1.4rem;
     margin-bottom: 1rem;
-    
+
     @include avatar-blue-border;
 
     * > { flex: 0 1 auto;}
@@ -51,5 +64,16 @@
 
   a {
     color: $color-accent-blue;
+  }
+}
+
+@media screen and (min-width: $phone) {
+	.user-container > .account-info > form {
+    flex-direction: row;
+    justify-content: space-between;
+
+    input[type="submit"] {
+      margin-top: 0;
+    }
   }
 }

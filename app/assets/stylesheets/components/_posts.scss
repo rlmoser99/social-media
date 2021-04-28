@@ -5,10 +5,7 @@
   }
 
   &-container {
-    border: 3px solid $color-dark-gray;
-    border-radius: $border-radius;
-    margin: var(--spacing) 0;
-    padding: var(--spacing);
+    @include container-outline;
   }
 
   &-header {

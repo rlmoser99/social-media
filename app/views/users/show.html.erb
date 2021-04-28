@@ -10,12 +10,12 @@
 
     <%= form_with model: @user do |f| %>
 
-      <div class="field">
+      <div>
         <%= f.label "Add or Update Avatar" %><br />
         <%= f.file_field :avatar, required: true %>
       </div>
 
-      <%= f.submit %>
+      <%= f.submit "Update Avatar" %>
     <% end %>
 
     <%= link_to "Edit Account", edit_user_registration_path %>

@@ -25,5 +25,13 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let!(:user) { create(:user) }
+
+  it "has an attached avatar" do
+    user.avatar.attach(
+      io: File.open(Rails.root.join('spec/support/assets/avatar.png')),
+      filename: 'avatar.png'
+    )
+    expect(user.avatar).to be_attached
+  end
 end
