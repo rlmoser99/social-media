@@ -3,7 +3,7 @@ nav > ul {
   display: flex;
   justify-content: space-between;
   padding: 1rem var(--page-margin);
-  
+
   * > { flex: 0 1 auto; }
 
   a {

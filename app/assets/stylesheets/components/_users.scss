@@ -18,7 +18,7 @@
       cursor: pointer;
       padding: 0;
     }
-    
+
     input[type=file]::file-selector-button {
       background-color: $color-primary-gray;
       border: 2px solid $color-accent-blue;
@@ -43,15 +43,10 @@
     display: flex;
     font-size: 1.4rem;
     margin-bottom: 1rem;
+    
+    @include avatar-blue-border;
 
     * > { flex: 0 1 auto;}
-
-    .profile-picture img {
-      border: 1px dashed $color-accent-blue;
-      margin-right: 1rem;
-      padding: 5px;
-      border-radius: 50%;
-    }
   }
 
   a {

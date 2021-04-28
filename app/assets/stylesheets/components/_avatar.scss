@@ -1,0 +1,17 @@
+.avatar {
+  .material-icons,
+  img {
+    border: 1px dashed $color-accent-green;
+    border-radius: 50%;
+    display: block;
+    margin-right: 1rem;
+  }
+
+  .material-icons {
+    font-size: 63px;
+  }
+
+  img {
+    padding: 5px;
+  }
+}

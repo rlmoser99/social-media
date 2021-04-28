@@ -1,6 +1,6 @@
 <div class="friend-container">
   <div class="friend-profile">
-    <span class="material-icons profile-picture">account_circle</span>
+    <%= render partial: 'users/avatar', locals: { user: user } %>
     <p><%= user.full_name%></p>
   </div>
   <%= button_to "Add Friend", friendship_requests_path, method: :post, params: { requested_friend_id: user.id }, form_class: "form-button" %>

@@ -1,0 +1,7 @@
+<div class="avatar">
+  <% if user.avatar.attached? %>
+    <%= cl_image_tag user.avatar.key, width: 65, crop: "fill" %>
+  <% else %>
+    <span class="material-icons">account_circle</span>
+  <% end %>
+</div>

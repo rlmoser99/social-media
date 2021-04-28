@@ -1,6 +1,6 @@
 <div class="friend-container">
   <div class="friend-profile">
-    <span class="material-icons profile-picture">account_circle</span>
+    <%= render partial: 'users/avatar', locals: { user: inverse_friend } %>
     <p><%= inverse_friend.full_name %></p>
   </div>
   <div class="btn-group">

@@ -21,10 +21,6 @@
 
   .friend-profile {
     @include user-profile;
-
-    .profile-picture {
-      @include profile-picture($color-accent-green);
-    }
   }
 
   @include button-group;

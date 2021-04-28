@@ -2,8 +2,8 @@
 
 class UsersController < ApplicationController
   def index
-    @sent_requests = current_user.friendship_requests.includes([:requested_friend])
-    @received_requests = current_user.requested_friendships.includes([:user])
+    @sent_requests = current_user.friendship_requests.includes([{ requested_friend: [avatar_attachment: :blob] }])
+    @received_requests = current_user.requested_friendships.includes([{ user: [avatar_attachment: :blob] }])
     @other_users = find_other_users(@sent_requests, @received_requests)
     @friendship_request_statuses = friendship_request_status_options
   end
@@ -35,8 +35,12 @@ class UsersController < ApplicationController
     end
 
     def find_other_users(sent_requests, received_requests)
-      request_ids = sent_requests.map(&:requested_friend_id) + received_requests.map(&:user_id)
-      User.all.reject { |user| request_ids.include?(user.id) || user == current_user }
+      User.with_attached_avatar
+          .where.not(id: [
+            current_user.id,
+            sent_requests.pluck(:requested_friend_id),
+            received_requests.pluck(:user_id)
+          ].flatten)
     end
 
     def friendship_request_status_options

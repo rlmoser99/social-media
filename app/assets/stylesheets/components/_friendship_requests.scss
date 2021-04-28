@@ -2,17 +2,13 @@
   display: grid;
   grid-template-columns: 1fr;
   margin-bottom: var(--spacing);
-  
+
   &-container {
     @include user-container;
   }
 
   &-profile {
     @include user-profile;
-
-    .profile-picture {
-      @include profile-picture($color-accent-green);
-    }
   }
 
   @include button-group;
@@ -24,7 +20,7 @@
     grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
     column-gap: 1rem;
     row-gap: 1rem;
-    
+
     &-container {
       margin-bottom: 0;
     }

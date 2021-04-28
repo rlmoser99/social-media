@@ -1,6 +1,6 @@
 <div class="friend-container">
   <div class="friend-profile">
-    <span class="material-icons profile-picture">account_circle</span>
+    <%= render partial: 'users/avatar', locals: { user: request.requested_friend } %>
     <p><%= request.requested_friend.full_name %></p>
   </div>
   <%= button_to "Delete Request", friendship_request_path(request), method: :delete, data: { confirm: "Are you sure?" }, form_class: "form-button" %>

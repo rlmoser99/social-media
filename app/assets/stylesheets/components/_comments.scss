@@ -12,15 +12,9 @@
     padding: 5px var(--spacing);
 
     * > { flex: 0 1 auto; }
-
-    .profile-picture {
-      @include profile-picture($color-accent-green);
-    }
   }
 
   &-content {
-    margin-left: 1rem;
-
     strong {
       color: $color-accent-green;
     }

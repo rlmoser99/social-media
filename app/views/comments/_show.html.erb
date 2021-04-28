@@ -1,5 +1,5 @@
 <div class="comment-container">
-  <span class="material-icons profile-picture">account_circle</span>
+  <%= render partial: 'users/avatar', locals: { user: comment.author } %>
   <div class="comment-content">
     <p><strong><%= comment.author.full_name %></strong></p>
     <p><%= comment.content %></p>
