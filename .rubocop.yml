@@ -19,10 +19,12 @@ Layout/IndentationConsistency:
 
 Layout/LineLength:
   Exclude:
+    - app/models/user.rb
     - config/**/*.rb
 
 Metrics/AbcSize:
   Exclude:
+  - app/models/user.rb
   - db/migrate/*.rb
 
 Metrics/BlockLength:
@@ -33,6 +35,11 @@ Metrics/BlockLength:
     - spec/**/*.rb
 
 Metrics/MethodLength:
+  Exclude:
+  - app/models/user.rb
+  - db/migrate/*.rb
+
+Rails/BulkChangeTable:
   Exclude:
   - db/migrate/*.rb
 

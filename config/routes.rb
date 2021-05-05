@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root to: 'posts#index', as: :authenticated_root
   end
   root to: "users#show"
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: "users/omniauth_callbacks" }
   resources :posts, only: %i[index new create]
   resources :users, only: %i[index show new create edit update]
   resources :friendship_requests, only: %i[new create edit update destroy]
