@@ -3,11 +3,20 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-      /* Email styles need to be inline */
+      body {
+        background-color: #ffffff;
+        color: #333333;
+        padding: 15px;
+      }
+
+      a {
+        color: #007BBD;
+      }
     </style>
   </head>
 
   <body>
     <%= yield %>
+    <p>Thank you for joining social-media, proudly created by <%= link_to 'rlmoser', 'https://www.rlmoser.com' %>!</p>
   </body>
 </html>

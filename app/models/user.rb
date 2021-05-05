@@ -46,6 +46,8 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: "author_id", inverse_of: :author, dependent: :destroy
   has_one_attached :avatar
 
+  after_create :send_welcome_email
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -69,9 +71,15 @@ class User < ApplicationRecord
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data == session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"] && user.email.blank?
+      if (data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"] && user.email.blank?)
         user.email = data["email"]
       end
     end
   end
+
+  private
+
+    def send_welcome_email
+      UserMailer.welcome_email(self).deliver_now
+    end
 end
