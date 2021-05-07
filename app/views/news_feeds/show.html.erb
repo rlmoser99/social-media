@@ -1,5 +1,5 @@
 <div class="post">
-  <%= render partial: 'form' %>
+  <%= render partial: 'posts/form' %>
 
   <% @posts&.each do |post| %>
     <div class="post-container">
@@ -22,9 +22,9 @@
       <div class="post-actions">
         <%= render partial: 'likes/new', locals: { post: post } %>
         <% post.comments&.each do |comment| %>
-          <%= render partial: 'comments/show', locals: { comment: comment } %>
+          <%= render partial: 'comments/comments', locals: { comment: comment } %>
         <% end %>
-        <%= render partial: 'comments/new', locals: { post: post } %>
+        <%= render partial: 'comments/form', locals: { commentable: post } %>
       </div>
     </div>
   <% end %>

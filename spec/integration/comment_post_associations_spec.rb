@@ -11,7 +11,7 @@ RSpec.describe "post and comment model associations" do
   let!(:amy_post) { create(:post, author: amy) }
 
   # Comment
-  let!(:beth_comment) { create(:comment, post: amy_post, author: beth) }
+  let!(:beth_comment) { create(:comment, commentable: amy_post, author: beth) }
 
   context 'post' do
     it "has one comment" do
@@ -21,7 +21,7 @@ RSpec.describe "post and comment model associations" do
 
   context 'comment' do
     it "has one post" do
-      expect(beth_comment.post).to be amy_post
+      expect(beth_comment.commentable).to be amy_post
     end
   end
 

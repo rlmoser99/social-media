@@ -1,6 +1,5 @@
 <div class="comment-form">
-  <%= form_with scope: :comment, url: comments_path, params: { post: post } do |f| %>
-    <%= f.hidden_field :post_id, :value => post.id %>
+  <%= form_with(model: [ commentable, Comment.new ]) do |f| %>
 
     <%= f.text_area :content, cols: 120, rows: 4 %>
 

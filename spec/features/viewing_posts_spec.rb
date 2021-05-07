@@ -25,7 +25,7 @@ RSpec.feature "Log in required to view friends posts" do
       click_on("Log in")
       expect(page).to have_content "Signed in successfully."
 
-      visit "/posts"
+      visit "/newsfeed"
       expect(page).to have_content "Friends post should be viewable."
       expect(page).not_to have_content "This post should not be viewable."
     end

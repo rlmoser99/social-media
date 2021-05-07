@@ -10,7 +10,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = current_user.comments.build(comment_params)
+    @comment = @commentable.comments.new(comment_params)
+    @comment.author = current_user
     return unless @comment.save
 
     flash[:notice] = "Your comment was created!"
@@ -20,6 +21,6 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:content, :post_id)
+      params.require(:comment).permit(:content)
     end
 end

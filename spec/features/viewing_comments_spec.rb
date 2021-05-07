@@ -20,7 +20,9 @@ RSpec.feature "Log in required to view friends posts and its comments" do
   let!(:user_post) { create(:post, author: carl, content: "This post should not be viewable.") }
 
   # Comment
-  let!(:user_comment) { create(:comment, author: carl, post: friend_post, content: "This comment should be viewable.") }
+  let!(:user_comment) do
+    create(:comment, author: carl, commentable: friend_post, content: "This comment should be viewable.")
+  end
 
   context "User can see friends posts and all its comments" do
     scenario "with valid credentials" do

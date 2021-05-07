@@ -2,17 +2,16 @@
 
 # == Schema Information
 #
-# Table name: posts
+# Table name: photos
 #
 #  id          :bigint           not null, primary key
-#  content     :text
-#  likes_count :integer          default(0), not null
+#  description :text
+#  image       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  author_id   :bigint
 #
-class Post < ApplicationRecord
+class Photo < ApplicationRecord
   belongs_to :author, class_name: "User", dependent: :destroy
-  has_many :likes, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
 end
