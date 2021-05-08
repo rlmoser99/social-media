@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  def index
-    @posts = Post.where(author_id: current_user.friends).or(Post.where(author_id: current_user))
-                 .includes([:author, { comments: [:author] }]).sort_by(&:created_at).reverse
-  end
-
   def new
     @post = Post.new
   end

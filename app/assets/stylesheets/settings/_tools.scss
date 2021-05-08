@@ -41,8 +41,6 @@
 }
 
 @mixin text-form($color) {
-  margin-top: var(--spacing);
-
   form {
     display: flex;
 
@@ -99,7 +97,7 @@
 }
 
 @mixin container-outline {
-  border: 3px solid $color-dark-gray;
+  border: $border-container;
   border-radius: $border-radius;
   margin: var(--spacing) 0;
   padding: var(--spacing);

@@ -1,0 +1,14 @@
+<div class="photo-form">
+  <%= form_with scope: :photo, url: photos_path do |f| %>
+
+    <div class="form-fields">
+      <%= f.file_field :image, required: true %>
+      <%= f.text_area :description, cols: 120, rows: 2, placeholder: "Describe your photo" %>
+    </div>
+
+    <%= button_tag :submit do %>
+      <span class="material-icons">add</span>
+      <span class="material-icons">image</span>
+    <% end %>
+  <% end %>
+</div>

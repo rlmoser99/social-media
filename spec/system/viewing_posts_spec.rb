@@ -24,21 +24,21 @@ RSpec.describe "user views newsfeed", type: :system do
 
   it "shows your friends posts" do
     visit(newsfeed_path)
-    within(".post") do
+    within(".newsfeed") do
       expect(page).to have_content(friend_post.content)
     end
   end
 
   it "shows your own posts" do
     visit(newsfeed_path)
-    within(".post") do
+    within(".newsfeed") do
       expect(page).to have_content(user_post.content)
     end
   end
 
   it "does not show non-friend posts" do
     visit(newsfeed_path)
-    within(".post") do
+    within(".newsfeed") do
       expect(page).not_to have_content(non_friend_post.content)
     end
   end

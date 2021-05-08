@@ -14,4 +14,5 @@
 class Photo < ApplicationRecord
   belongs_to :author, class_name: "User", dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+  has_one_attached :image
 end

@@ -1,0 +1,19 @@
+<div class="photo-container">
+  <div class="photo-header">
+    <div class="header-profile">
+      <%= render partial: 'users/avatar', locals: { user: photo.author } %>
+      <div class="header-content">
+        <p><strong><%= photo.author.full_name %></strong></p>
+        <p><small><%= time_ago_in_words(photo.created_at) %> ago</small></p>
+      </div>
+    </div>
+  </div>
+  <%= cl_image_tag photo.image.key, class: 'photo-image' %>
+  <p class="photo-description"><%= photo.description %></p>
+  <div class="photo-actions">
+    <% photo.comments&.each do |comment| %>
+      <%= render partial: 'comments/comments', locals: { comment: comment } %>
+    <% end %>
+    <%= render partial: 'comments/form', locals: { commentable: photo } %>
+  </div>
+</div>
