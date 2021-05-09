@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     return unless @comment.save
 
     flash[:notice] = "Your comment was created!"
-    redirect_back fallback_location: posts_path
+    redirect_back fallback_location: newsfeed_path
   end
 
   private

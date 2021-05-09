@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:notice] = "Your post was created!"
-      redirect_to posts_path
+      redirect_to newsfeed_path
     else
       render :new
     end

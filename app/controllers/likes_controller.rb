@@ -6,16 +6,19 @@ class LikesController < ApplicationController
   end
 
   def create
-    @like = current_user.likes.build(like_params)
-    return unless @like.save
-
-    flash[:notice] = "Your like has been saved."
-    redirect_back fallback_location: posts_path
+    @like = @likeable.likes.new(like_params)
+    @like.user = current_user
+    if @like.save
+      flash[:notice] = "Your like has been saved."
+    else
+      flash[:alert] = "Your like has not been saved."
+    end
+    redirect_back fallback_location: newsfeed_path
   end
 
   private
 
     def like_params
-      params.permit(:user_id, :post_id)
+      params.permit(:user_id)
     end
 end

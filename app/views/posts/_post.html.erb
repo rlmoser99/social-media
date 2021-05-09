@@ -16,7 +16,7 @@
   </div>
   <p class="post-content"><%= post.content %></p>
   <div class="post-actions">
-    <%= render partial: 'likes/new', locals: { post: post } %>
+    <%= render partial: 'likes/new', locals: { likeable: post } %>
     <% post.comments&.each do |comment| %>
       <%= render partial: 'comments/comments', locals: { comment: comment } %>
     <% end %>

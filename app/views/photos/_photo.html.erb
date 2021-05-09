@@ -7,10 +7,17 @@
         <p><small><%= time_ago_in_words(photo.created_at) %> ago</small></p>
       </div>
     </div>
+    <div class="like-count">
+      <% if photo.likes_count > 0 %>
+        <small><%= photo.likes_count %></small>
+        <span class="material-icons">thumb_up</span>
+      <% end %>
+    </div>
   </div>
   <%= cl_image_tag photo.image.key, class: 'photo-image' %>
   <p class="photo-description"><%= photo.description %></p>
   <div class="photo-actions">
+    <%= render partial: 'likes/new', locals: { likeable: photo } %>
     <% photo.comments&.each do |comment| %>
       <%= render partial: 'comments/comments', locals: { comment: comment } %>
     <% end %>
