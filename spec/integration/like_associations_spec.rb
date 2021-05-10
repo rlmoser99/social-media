@@ -11,7 +11,7 @@ RSpec.describe "like, post and user model associations" do
   let!(:amy_post) { create(:post, author: amy) }
 
   # Like
-  let!(:beth_like) { create(:like, likeable: amy_post, user: beth) }
+  let!(:beth_like) { create(:like, likeable: amy_post, author: beth) }
 
   context 'post' do
     it "has one like" do

@@ -14,6 +14,7 @@
 class FriendshipRequest < ApplicationRecord
   belongs_to :user
   belongs_to :requested_friend, class_name: 'User'
+  has_one :notification, as: :notifiable, dependent: :destroy
 
   enum status: {
     pending: 1,

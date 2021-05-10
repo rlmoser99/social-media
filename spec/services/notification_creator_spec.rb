@@ -20,13 +20,13 @@ RSpec.describe NotificationCreator do
 
   context "after the notification is created" do
     it "creates a notification for requested friend" do
-      creator = NotificationCreator.new(amy_beth)
+      creator = NotificationCreator.new(amy_beth, beth)
       creator.call
       expect(beth.notifications.count).to eq(1)
     end
 
     it "creates a new unread notification for requested friend" do
-      creator = NotificationCreator.new(amy_beth)
+      creator = NotificationCreator.new(amy_beth, beth)
       creator.call
       expect(beth.unread_notifications_count).to eq(1)
     end

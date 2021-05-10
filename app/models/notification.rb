@@ -4,15 +4,16 @@
 #
 # Table name: notifications
 #
-#  id                    :bigint           not null, primary key
-#  read_at               :datetime
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
-#  friendship_request_id :bigint
-#  recipient_id          :bigint
+#  id              :bigint           not null, primary key
+#  notifiable_type :string
+#  read_at         :datetime
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  notifiable_id   :bigint
+#  recipient_id    :bigint
 #
 class Notification < ApplicationRecord
-  belongs_to :friendship_request
+  belongs_to :notifiable, polymorphic: true
   belongs_to :recipient, class_name: 'User'
 
   scope :unread, -> { where(read_at: nil) }

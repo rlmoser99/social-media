@@ -1,0 +1,14 @@
+<p>
+  <%= notification.notifiable.author.full_name %>
+  <% if notification.notifiable_type == "Comment" %>
+    commented
+    "<em><%= notification.notifiable.content %></em>"
+    on
+    <%= link_to "your post", post_path(notification.notifiable.commentable) %>
+    from <%= time_ago_in_words(notification.notifiable.commentable.created_at) %> ago.
+  <% elsif notification.notifiable_type == "Like" %>
+    liked
+    <%= link_to "your post", post_path(notification.notifiable.likeable) %>
+    from <%= time_ago_in_words(notification.notifiable.likeable.created_at) %> ago.
+  <% end %>
+</p>

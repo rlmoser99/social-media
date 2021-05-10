@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class PhotosController < ApplicationController
+  def show
+    @photo = Photo.where(id: params[:id])
+                  .includes([{ author: [avatar_attachment: :blob] },
+                             { comments: { author: [avatar_attachment: :blob] } }]).first
+  end
+
   def new
     @photo = Photo.new
   end

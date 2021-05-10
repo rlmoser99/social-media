@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  def show
+    @post = Post.where(id: params[:id])
+                .includes([{ author: [avatar_attachment: :blob] },
+                           { comments: { author: [avatar_attachment: :blob] } }]).first
+  end
+
   def new
     @post = Post.new
   end

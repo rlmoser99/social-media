@@ -7,11 +7,11 @@ RSpec.describe "friendship notification and user model associations" do
   let!(:amy) { create(:user, first_name: 'Amy') }
   let!(:beth) { create(:user, first_name: 'Beth') }
 
-  # Friendship Request
+  # Friendship Request - Notifiable Object
   let!(:amy_beth) { create(:friendship_request, user: amy, requested_friend: beth) }
 
   # Notification
-  let!(:beth_notification) { create(:notification, :new, recipient: beth, friendship_request: amy_beth) }
+  let!(:beth_notification) { create(:notification, :new, recipient: beth, notifiable: amy_beth) }
 
   context "when user gets a notification" do
     it "has a notification" do
@@ -24,8 +24,8 @@ RSpec.describe "friendship notification and user model associations" do
       expect(beth_notification.recipient).to eq(beth)
     end
 
-    it "has a friendship_request" do
-      expect(beth_notification.friendship_request).to eq(amy_beth)
+    it "has a notifiable object" do
+      expect(beth_notification.notifiable).to eq(amy_beth)
     end
   end
 end

@@ -15,4 +15,5 @@
 class Comment < ApplicationRecord
   belongs_to :author, class_name: "User", dependent: :destroy
   belongs_to :commentable, polymorphic: true
+  has_one :notification, as: :notifiable, dependent: :destroy
 end

@@ -7,8 +7,9 @@ class LikesController < ApplicationController
 
   def create
     @like = @likeable.likes.new(like_params)
-    @like.user = current_user
+    @like.author = current_user
     if @like.save
+      NotificationCreator.new(@like, @like.likeable.author).call
       flash[:notice] = "Your like has been saved."
     else
       flash[:alert] = "Your like has not been saved."

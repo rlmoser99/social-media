@@ -12,7 +12,7 @@ class FriendshipRequestsController < ApplicationController
     return unless @friendship_request.save
 
     flash[:notice] = "Your friendship request has been sent."
-    NotificationCreator.new(@friendship_request).call
+    NotificationCreator.new(@friendship_request, @friendship_request.requested_friend).call
     redirect_back fallback_location: users_path
   end
 

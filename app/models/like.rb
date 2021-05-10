@@ -8,23 +8,23 @@
 #  likeable_type :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  author_id     :bigint
 #  likeable_id   :bigint
-#  user_id       :bigint
 #
 # Indexes
 #
-#  index_likes_on_user_id_and_likeable_id_and_likeable_type  (user_id,likeable_id,likeable_type) UNIQUE
+#  index_likes_on_author_id_and_likeable_id_and_likeable_type  (author_id,likeable_id,likeable_type) UNIQUE
 #
 class Like < ApplicationRecord
-  belongs_to :user
+  belongs_to :author, class_name: "User"
   belongs_to :likeable, polymorphic: true, counter_cache: true
-  validates :user, uniqueness: { scope: %i[likeable_id likeable_type] }
+  validates :author, uniqueness: { scope: %i[likeable_id likeable_type] }
   validate :author_can_not_like
 
   private
 
     def author_can_not_like
-      return unless user_id == likeable.author_id
+      return unless author_id == likeable.author_id
 
       errors.add(:user, "can not like their own post.")
     end

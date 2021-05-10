@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
   after_action :update_notifications, only: :index
 
   def index
-    @notifications = current_user.notifications.includes([{ friendship_request: [:user] }])
+    @notifications = current_user.notifications.includes([{ notifiable: %i[user likeable commentable author] }])
                                  .sort_by(&:created_at).reverse
     @friendship_request_statuses = friendship_request_status_options
   end

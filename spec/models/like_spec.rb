@@ -8,12 +8,12 @@
 #  likeable_type :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  author_id     :bigint
 #  likeable_id   :bigint
-#  user_id       :bigint
 #
 # Indexes
 #
-#  index_likes_on_user_id_and_likeable_id_and_likeable_type  (user_id,likeable_id,likeable_type) UNIQUE
+#  index_likes_on_author_id_and_likeable_id_and_likeable_type  (author_id,likeable_id,likeable_type) UNIQUE
 #
 require 'rails_helper'
 
@@ -23,10 +23,10 @@ RSpec.describe Like, type: :model do
     let!(:amy) { create(:user, first_name: 'Amy') }
     let!(:beth) { create(:user, first_name: 'Beth') }
     let!(:amy_post) { create(:post, author: amy) }
-    let!(:beth_like) { create(:like, user: beth, likeable: amy_post) }
+    let!(:beth_like) { create(:like, author: beth, likeable: amy_post) }
 
     it "raises an Invalid Record error" do
-      expect { create(:like, user: beth, likeable: amy_post) }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { create(:like, author: beth, likeable: amy_post) }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 
@@ -37,7 +37,7 @@ RSpec.describe Like, type: :model do
     let!(:amy_post) { create(:post, author: amy) }
 
     it "raises an Invalid Record error" do
-      expect { create(:like, user: amy, likeable: amy_post) }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { create(:like, author: amy, likeable: amy_post) }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end
