@@ -22,7 +22,7 @@ RSpec.describe Like, type: :model do
     # 2 Users, 1 Post, 1 Like
     let!(:amy) { create(:user, first_name: 'Amy') }
     let!(:beth) { create(:user, first_name: 'Beth') }
-    let!(:amy_post) { create(:post, author: amy) }
+    let!(:amy_post) { create(:text_post, author: amy) }
     let!(:beth_like) { create(:like, author: beth, likeable: amy_post) }
 
     it "raises an Invalid Record error" do
@@ -34,7 +34,7 @@ RSpec.describe Like, type: :model do
     # 2 Users, 1 Post, 1 Like
     let!(:amy) { create(:user, first_name: 'Amy') }
     let!(:beth) { create(:user, first_name: 'Beth') }
-    let!(:amy_post) { create(:post, author: amy) }
+    let!(:amy_post) { create(:text_post, author: amy) }
 
     it "raises an Invalid Record error" do
       expect { create(:like, author: amy, likeable: amy_post) }.to raise_error(ActiveRecord::RecordInvalid)

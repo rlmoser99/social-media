@@ -1,5 +1,5 @@
 <div class="post-form">
-  <%= form_with scope: :post, url: posts_path do |f| %>
+  <%= form_with scope: :text_post, url: text_posts_path do |f| %>
     <%= f.text_area :content, cols: 120, rows: 5 %>
 
     <%= button_tag :submit do %>

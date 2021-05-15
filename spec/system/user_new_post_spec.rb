@@ -10,7 +10,7 @@ RSpec.describe "user creates a new post", type: :system do
     sample_post_content = "This is sample post content."
     visit(newsfeed_path)
     within '.post-form' do
-      fill_in("post[content]", with: sample_post_content)
+      fill_in("text_post[content]", with: sample_post_content)
       find('button[type="submit"]').click
     end
     expect(page).to have_content(sample_post_content)

@@ -7,11 +7,11 @@ RSpec.describe "post and user model associations" do
   let!(:amy) { create(:user) }
 
   # Post
-  let!(:amy_post) { create(:post, author: amy) }
+  let!(:amy_post) { create(:text_post, author: amy) }
 
   context 'user' do
     it "has one post" do
-      expect(amy.posts).to include(amy_post)
+      expect(amy.text_posts).to include(amy_post)
     end
   end
 

@@ -13,8 +13,8 @@ RSpec.feature "Log in required to view friends posts" do
   let!(:beth_amy) { create(:friendship, user: beth, friend: amy) }
 
   # Posts
-  let!(:beth_post) { create(:post, author: beth, content: "Friends post should be viewable.") }
-  let!(:carl_post) { create(:post, author: carl, content: "This post should not be viewable.") }
+  let!(:beth_post) { create(:text_post, author: beth, content: "Friends post should be viewable.") }
+  let!(:carl_post) { create(:text_post, author: carl, content: "This post should not be viewable.") }
 
   context "User can see friends posts" do
     scenario "with valid credentials" do

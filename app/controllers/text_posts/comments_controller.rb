@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-module Photos
+module TextPosts
   class CommentsController < CommentsController
     before_action :set_commentable
 
     private
 
       def set_commentable
-        @commentable = Photo.find(params[:photo_id])
+        @commentable = TextPost.find(params[:text_post_id])
       end
   end
 end

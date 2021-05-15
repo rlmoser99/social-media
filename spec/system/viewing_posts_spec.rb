@@ -13,9 +13,11 @@ RSpec.describe "user views newsfeed", type: :system do
   let!(:friend_user) { create(:friendship, user: friend, friend: user) }
 
   # Posts
-  let!(:user_post) { create(:post, author: user, content: "My post should be viewable.") }
-  let!(:friend_post) { create(:post, author: friend, content: "Friends post should be viewable.") }
-  let!(:non_friend_post) { create(:post, author: non_friend, content: "A non-friend post should not be viewable.") }
+  let!(:user_post) { create(:text_post, author: user, content: "My post should be viewable.") }
+  let!(:friend_post) { create(:text_post, author: friend, content: "Friends post should be viewable.") }
+  let!(:non_friend_post) do
+    create(:text_post, author: non_friend, content: "A non-friend post should not be viewable.")
+  end
 
   before do
     user.reload

@@ -11,9 +11,8 @@
 #  updated_at  :datetime         not null
 #  author_id   :bigint
 #
-FactoryBot.define do
-  factory :post do
-    content { "MyText" }
-    author_id { "" }
-  end
+require 'rails_helper'
+
+RSpec.describe TextPost, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

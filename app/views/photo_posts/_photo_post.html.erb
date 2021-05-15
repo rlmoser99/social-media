@@ -1,0 +1,26 @@
+<div class="photo-container">
+  <div class="photo-header">
+    <div class="header-profile">
+      <%= render partial: 'users/avatar', locals: { user: photo_post.author } %>
+      <div class="header-content">
+        <p><strong><%= photo_post.author.full_name %></strong></p>
+        <p><small><%= time_ago_in_words(photo_post.created_at) %> ago</small></p>
+      </div>
+    </div>
+    <div class="like-count">
+      <% if photo_post.likes_count > 0 %>
+        <small><%= photo_post.likes_count %></small>
+        <span class="material-icons">thumb_up</span>
+      <% end %>
+    </div>
+  </div>
+  <%= cl_image_tag photo_post.image.key, class: 'photo-image' %>
+  <p class="photo-description"><%= photo_post.description %></p>
+  <div class="photo-actions">
+    <%= render partial: 'likes/new', locals: { likeable: photo_post } %>
+    <% photo_post.comments&.each do |comment| %>
+      <%= render partial: 'comments/comments', locals: { comment: comment } %>
+    <% end %>
+    <%= render partial: 'comments/form', locals: { commentable: photo_post } %>
+  </div>
+</div>

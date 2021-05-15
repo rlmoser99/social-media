@@ -32,7 +32,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
 
-  has_many :posts, foreign_key: "author_id", inverse_of: :author, dependent: :destroy
+  has_many :text_posts, foreign_key: "author_id", inverse_of: :author, dependent: :destroy
   has_many :friendship_requests, dependent: :destroy
   has_many :requested_friendships,
            class_name: "FriendshipRequest",
@@ -44,7 +44,7 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: "recipient_id", inverse_of: :recipient, dependent: :destroy
   has_many :likes, foreign_key: "author_id", inverse_of: :author, dependent: :destroy
   has_many :comments, foreign_key: "author_id", inverse_of: :author, dependent: :destroy
-  has_many :photos, foreign_key: "author_id", inverse_of: :author, dependent: :destroy
+  has_many :photo_posts, foreign_key: "author_id", inverse_of: :author, dependent: :destroy
   has_one_attached :avatar
 
   after_create :send_welcome_email

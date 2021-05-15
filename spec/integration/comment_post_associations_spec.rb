@@ -8,7 +8,7 @@ RSpec.describe "post and comment model associations" do
   let!(:beth) { create(:user) }
 
   # Post
-  let!(:amy_post) { create(:post, author: amy) }
+  let!(:amy_post) { create(:text_post, author: amy) }
 
   # Comment
   let!(:beth_comment) { create(:comment, commentable: amy_post, author: beth) }

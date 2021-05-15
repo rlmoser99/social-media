@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_020119) do
+ActiveRecord::Schema.define(version: 2021_05_15_201422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_020119) do
     t.string "notifiable_type"
   end
 
-  create_table "photos", force: :cascade do |t|
+  create_table "photo_posts", force: :cascade do |t|
     t.string "image"
     t.text "description"
     t.bigint "author_id"
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_020119) do
     t.integer "likes_count", default: 0, null: false
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "text_posts", force: :cascade do |t|
     t.text "content"
     t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false

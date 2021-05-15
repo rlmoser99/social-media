@@ -8,7 +8,7 @@ RSpec.describe "like, post and user model associations" do
   let!(:beth) { create(:user) }
 
   # Post
-  let!(:amy_post) { create(:post, author: amy) }
+  let!(:amy_post) { create(:text_post, author: amy) }
 
   # Like
   let!(:beth_like) { create(:like, likeable: amy_post, author: beth) }

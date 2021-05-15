@@ -2,17 +2,20 @@
 
 # == Schema Information
 #
-# Table name: posts
+# Table name: photo_posts
 #
 #  id          :bigint           not null, primary key
-#  content     :text
+#  description :text
+#  image       :string
 #  likes_count :integer          default(0), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  author_id   :bigint
 #
-require 'rails_helper'
-
-RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+FactoryBot.define do
+  factory :photo_post do
+    image { "MyString" }
+    description { "MyText" }
+    author_id { "" }
+  end
 end

@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: posts
+# Table name: text_posts
 #
 #  id          :bigint           not null, primary key
 #  content     :text
@@ -11,8 +11,9 @@
 #  updated_at  :datetime         not null
 #  author_id   :bigint
 #
-class Post < ApplicationRecord
-  belongs_to :author, class_name: "User", dependent: :destroy
-  has_many :likes, as: :likeable, dependent: :destroy
-  has_many :comments, as: :commentable, dependent: :destroy
+FactoryBot.define do
+  factory :text_post do
+    content { "MyText" }
+    author_id { "" }
+  end
 end

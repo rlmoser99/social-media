@@ -13,9 +13,9 @@ RSpec.describe TimelineQuery do
   let!(:friend_user) { create(:friendship, user: friend, friend: user) }
 
   # Posts
-  let!(:user_post_yesterday) { create(:post, author: user, created_at: Time.zone.yesterday) }
-  let!(:friend_post_today) { create(:post, author: friend, created_at: Time.zone.today) }
-  let!(:non_friend_post) { create(:post, author: non_friend) }
+  let!(:user_post_yesterday) { create(:text_post, author: user, created_at: Time.zone.yesterday) }
+  let!(:friend_post_today) { create(:text_post, author: friend, created_at: Time.zone.today) }
+  let!(:non_friend_post) { create(:text_post, author: non_friend) }
 
   it "returns users and their friends posts in reverse chronological order" do
     timeline = TimelineQuery.new(user)

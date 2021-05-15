@@ -7,14 +7,14 @@
                   locals: { request: notification.notifiable,
                             inverse_friend: notification.notifiable.user,
                             friendship_request_statuses: @friendship_request_statuses } %>
-    <% elsif notification.notifiable_type == "Comment" && notification.notifiable&.commentable.is_a?(Post) %>
-      <%= render partial: 'posts/summary', locals: { notification: notification } %>
-    <% elsif notification.notifiable_type == "Comment" && notification.notifiable&.commentable.is_a?(Photo) %>
-      <%= render partial: 'photos/summary', locals: { notification: notification } %>
-    <% elsif notification.notifiable_type == "Like" &&  notification.notifiable&.likeable.is_a?(Post) %>
-      <%= render partial: 'posts/summary', locals: { notification: notification } %>
-    <% elsif notification.notifiable_type == "Like" &&  notification.notifiable&.likeable.is_a?(Photo) %>
-      <%= render partial: 'photos/summary', locals: { notification: notification } %>
+    <% elsif notification.notifiable_type == "Comment" && notification.notifiable&.commentable.is_a?(TextPost) %>
+      <%= render partial: 'text_posts/summary', locals: { notification: notification } %>
+    <% elsif notification.notifiable_type == "Comment" && notification.notifiable&.commentable.is_a?(PhotoPost) %>
+      <%= render partial: 'photo_posts/summary', locals: { notification: notification } %>
+    <% elsif notification.notifiable_type == "Like" &&  notification.notifiable&.likeable.is_a?(TextPost) %>
+      <%= render partial: 'text_posts/summary', locals: { notification: notification } %>
+    <% elsif notification.notifiable_type == "Like" &&  notification.notifiable&.likeable.is_a?(PhotoPost) %>
+      <%= render partial: 'photo_posts/summary', locals: { notification: notification } %>
     <% end %>
   <% end %>
 </div>

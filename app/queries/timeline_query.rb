@@ -15,14 +15,14 @@ class TimelineQuery
   private
 
     def find_posts
-      Post.where(author_id: @user.friends).or(Post.where(author_id: @user))
-          .includes([{ author: [avatar_attachment: :blob] }, { comments: { author: [avatar_attachment: :blob] } }])
-          .order(created_at: :desc)
+      TextPost.where(author_id: @user.friends).or(TextPost.where(author_id: @user))
+              .includes([{ author: [avatar_attachment: :blob] }, { comments: { author: [avatar_attachment: :blob] } }])
+              .order(created_at: :desc)
     end
 
     def find_photos
-      Photo.where(author_id: @user.friends).or(Photo.where(author_id: @user))
-           .includes([{ author: [avatar_attachment: :blob] }, { comments: { author: [avatar_attachment: :blob] } }])
-           .order(created_at: :desc)
+      PhotoPost.where(author_id: @user.friends).or(PhotoPost.where(author_id: @user))
+               .includes([{ author: [avatar_attachment: :blob] }, { comments: { author: [avatar_attachment: :blob] } }])
+               .order(created_at: :desc)
     end
 end

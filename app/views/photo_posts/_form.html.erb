@@ -1,5 +1,5 @@
 <div class="photo-form">
-  <%= form_with scope: :photo, url: photos_path do |f| %>
+  <%= form_with scope: :photo_post, url: photo_posts_path do |f| %>
 
     <div class="form-fields">
       <%= f.file_field :image, required: true %>
