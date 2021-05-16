@@ -16,10 +16,10 @@
   </div>
 
   <% @feed&.each do |item| %>
-    <% if item.is_a?(PhotoPost) %>
-      <%= render partial: 'photo_posts/photo_post', locals: { photo_post: item } %>
-    <% else %>
-      <%= render partial: 'text_posts/text_post', locals: { text_post: item } %>
+    <% if item.photo_post? %>
+      <%= render partial: 'photo_posts/photo_post', locals: { photo_post: item.postable } %>
+    <% elsif item.text_post?%>
+      <%= render partial: 'text_posts/text_post', locals: { text_post: item.postable } %>
     <% end %>
   <% end %>
 </div>

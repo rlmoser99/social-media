@@ -17,5 +17,6 @@ FactoryBot.define do
     image { "MyString" }
     description { "MyText" }
     author_id { "" }
+    post { association :post, postable: instance, author: author }
   end
 end

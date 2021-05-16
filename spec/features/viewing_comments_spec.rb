@@ -15,7 +15,7 @@ RSpec.feature "Log in required to view friends posts and its comments" do
   let!(:beth_carl) { create(:friendship, user: beth, friend: carl) }
   let!(:carl_beth) { create(:friendship, user: carl, friend: beth) }
 
-  # Posts
+  # Text Posts
   let!(:friend_post) { create(:text_post, author: beth, content: "Friends post should be viewable.") }
   let!(:user_post) { create(:text_post, author: carl, content: "This post should not be viewable.") }
 

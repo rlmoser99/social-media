@@ -2,6 +2,10 @@
 
 class NewsFeedsController < ApplicationController
   def show
-    @feed = TimelineQuery.new(current_user).call
+    @user = current_user
+    @feed = Post.where(author_id: @user.friends).or(Post.where(author_id: @user))
+                .includes(postable: { author: [avatar_attachment: :blob],
+                                      comments: { author: [avatar_attachment: :blob] } })
+                .order(created_at: :desc)
   end
 end

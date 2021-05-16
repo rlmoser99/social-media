@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PhotoPostsController < ApplicationController
+  include Newsfeedable
+
   def show
     @photo_post = PhotoPost.where(id: params[:id])
                            .includes([{ author: [avatar_attachment: :blob] },
@@ -15,6 +17,7 @@ class PhotoPostsController < ApplicationController
     @photo_post = current_user.photo_posts.build(photo_params)
 
     if @photo_post.save
+      newsfeed_addition(@photo_post)
       flash[:notice] = "Your photo has been posted!"
       redirect_back fallback_location: newsfeed_path
     else

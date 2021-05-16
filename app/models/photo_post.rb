@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: photos
+# Table name: photo_posts
 #
 #  id          :bigint           not null, primary key
 #  description :text
@@ -17,4 +17,5 @@ class PhotoPost < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
   has_one_attached :image
+  has_one :post, as: :postable, dependent: :destroy
 end

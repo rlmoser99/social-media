@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class TextPostsController < ApplicationController
+  include Newsfeedable
+
   def show
     @text_post = TextPost.where(id: params[:id])
                          .includes([{ author: [avatar_attachment: :blob] },
@@ -14,6 +16,7 @@ class TextPostsController < ApplicationController
   def create
     @text_post = current_user.text_posts.build(text_post_params)
     if @text_post.save
+      newsfeed_addition(@text_post)
       flash[:notice] = "Your post was created!"
       redirect_to newsfeed_path
     else

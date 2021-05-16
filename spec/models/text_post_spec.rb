@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: posts
+# Table name: text_posts
 #
 #  id          :bigint           not null, primary key
 #  content     :text
