@@ -21,6 +21,7 @@ Layout/LineLength:
   Exclude:
     - app/models/user.rb
     - config/**/*.rb
+    - lib/tasks/sample_data.rake
 
 Metrics/AbcSize:
   Exclude:
