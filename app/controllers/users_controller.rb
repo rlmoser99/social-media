@@ -10,6 +10,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @timeline = Post.where(author_id: @user)
+                    .includes(postable: { author: [avatar_attachment: :blob],
+                                          comments: { author: [avatar_attachment: :blob] } })
+                    .order(created_at: :desc).page params[:page]
   end
 
   def edit

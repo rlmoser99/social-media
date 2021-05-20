@@ -20,4 +20,17 @@
 
     <%= link_to "Edit Account", edit_user_registration_path %>
   </div>
+
+  <h3>Personal Timeline</h3>
+
+  <% @timeline&.each do |item| %>
+    <% if item.photo_post? %>
+      <%= render partial: 'photo_posts/photo_post', locals: { photo_post: item.postable } %>
+    <% elsif item.text_post?%>
+      <%= render partial: 'text_posts/text_post', locals: { text_post: item.postable } %>
+    <% end %>
+  <% end %>
+
+  <%= paginate @timeline %>
+
 </div>
