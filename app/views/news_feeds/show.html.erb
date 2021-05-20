@@ -22,4 +22,6 @@
       <%= render partial: 'text_posts/text_post', locals: { text_post: item.postable } %>
     <% end %>
   <% end %>
+
+  <%= paginate @feed %>
 </div>

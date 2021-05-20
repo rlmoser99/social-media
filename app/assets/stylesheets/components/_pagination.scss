@@ -1,0 +1,25 @@
+.pagination {
+  display: flex;
+  color: $color-accent-blue;
+
+  * > { flex: 0 1 auto; }
+
+  .first, .last, .next, .prev {
+    display: inline-flex;
+
+    * > { flex: 0 1 auto; }
+
+    a {
+      align-items: center;
+      display: inline-flex;
+      text-decoration: none;
+
+      * > { flex: 0 1 auto; }
+    }
+  }
+
+  .page {
+    line-height: 30px;
+    padding: 0 .5rem;
+  }
+}
