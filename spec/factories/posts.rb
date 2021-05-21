@@ -13,8 +13,7 @@
 #
 FactoryBot.define do
   factory :post do
-    postable_id { "" }
-    postable_type { "TextPost" }
-    author_id { "" }
+    association(:postable, factory: %i[text_post with_author])
+    association(:author, factory: :user)
   end
 end

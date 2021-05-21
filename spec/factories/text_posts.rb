@@ -16,5 +16,9 @@ FactoryBot.define do
     content { "MyText" }
     author_id { "" }
     post { association :post, postable: instance, author: author }
+
+    trait :with_author do
+      association(:author, factory: :user)
+    end
   end
 end

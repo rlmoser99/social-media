@@ -27,7 +27,18 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let!(:user) { create(:user) }
+  subject(:user) { create(:user) }
+
+  it { is_expected.to have_many(:friendship_requests).dependent(:destroy) }
+  it { is_expected.to have_many(:requested_friendships).dependent(:destroy) }
+  it { is_expected.to have_many(:friendships).dependent(:destroy) }
+  it { is_expected.to have_many(:friends) }
+  it { is_expected.to have_many(:posts).dependent(:destroy) }
+  it { is_expected.to have_many(:text_posts).dependent(:destroy) }
+  it { is_expected.to have_many(:photo_posts).dependent(:destroy) }
+  it { is_expected.to have_many(:comments).dependent(:destroy) }
+  it { is_expected.to have_many(:likes).dependent(:destroy) }
+  it { is_expected.to have_many(:notifications).dependent(:destroy) }
 
   it "has an attached avatar" do
     user.avatar.attach(
@@ -35,5 +46,18 @@ RSpec.describe User, type: :model do
       filename: 'avatar.png'
     )
     expect(user.avatar).to be_attached
+  end
+
+  it "sends a welcome email" do
+    expect { create(:user) }
+      .to change { ActionMailer::Base.deliveries.count }.by(1)
+  end
+
+  describe "#full_name" do
+    let!(:named_user) { create(:user, first_name: "Jubal", last_name: "Early") }
+
+    it "returns user's full name" do
+      expect(named_user.full_name).to eq("Jubal Early")
+    end
   end
 end
