@@ -6,9 +6,9 @@
   <div class="btn-group">
     <% friendship_request_statuses.each do |status| %>
       <% if request.status == status %>
-        <%= button_to "#{request.change_status_label[status.to_sym]}", friendship_request_path(request), disabled: true, form_class: "form-button" %>
+        <%= button_to "#{humanize_status_label[status.to_sym]}", friendship_request_path(request), disabled: true, form_class: "form-button" %>
       <% else %>
-        <%= button_to "#{request.change_status_label[status.to_sym]}", friendship_request_path(request), method: :patch, params: { status: "#{status}" }, form_class: "form-button" %>
+        <%= button_to "#{humanize_status_label[status.to_sym]}", friendship_request_path(request), method: :patch, params: { status: "#{status}" }, form_class: "form-button" %>
       <% end %>
     <% end %>
   </div>

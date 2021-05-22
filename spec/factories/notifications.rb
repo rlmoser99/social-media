@@ -22,5 +22,10 @@ FactoryBot.define do
     trait :new do
       read_at { nil }
     end
+
+    trait :with_friendship_request do
+      association(:notifiable, factory: %i[friendship_request with_two_users])
+      association(:recipient, factory: :user)
+    end
   end
 end

@@ -2,15 +2,22 @@
 
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the FriendshipRequestsHelper. For example:
-#
-# describe FriendshipRequestsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
-# RSpec.describe FriendshipRequestsHelper, type: :helper do
-# end
+RSpec.describe FriendshipRequestsHelper, type: :helper do
+  describe '#humanize_status_label' do
+    it 'humanizes accepted status for forms' do
+      expect(helper.humanize_status_label[:pending]).to be nil
+    end
+
+    it 'humanizes accepted status for forms' do
+      expect(helper.humanize_status_label[:accepted]).to eq("Accept")
+    end
+
+    it 'humanizes accepted status for forms' do
+      expect(helper.humanize_status_label[:declined]).to eq("Decline")
+    end
+
+    it 'humanizes accepted status for forms' do
+      expect(helper.humanize_status_label[:blocked]).to eq("Block")
+    end
+  end
+end

@@ -22,13 +22,4 @@ class FriendshipRequest < ApplicationRecord
     declined: 3,
     blocked: 4
   }
-
-  def change_status_label
-    {
-      pending: nil,
-      accepted: "Accept",
-      declined: "Decline",
-      blocked: "Block"
-    }
-  end
 end

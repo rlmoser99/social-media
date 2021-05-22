@@ -15,7 +15,8 @@
 require 'rails_helper'
 
 RSpec.describe Notification, type: :model do
-  # subject(:notification) { create(:notification) }
+  subject(:notification) { create(:notification, :with_friendship_request) }
 
-  # it { should belong_to(:notifiable) }
+  it { is_expected.to belong_to(:notifiable) }
+  it { is_expected.to belong_to(:recipient) }
 end

@@ -28,5 +28,10 @@ FactoryBot.define do
     trait :blocked do
       status { 4 }
     end
+
+    trait :with_two_users do
+      association(:user, factory: :user)
+      association(:requested_friend, factory: :user)
+    end
   end
 end

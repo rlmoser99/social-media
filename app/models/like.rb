@@ -19,13 +19,4 @@ class Like < ApplicationRecord
   belongs_to :author, class_name: "User"
   belongs_to :likeable, polymorphic: true, counter_cache: true
   validates :author, uniqueness: { scope: %i[likeable_id likeable_type] }
-  validate :author_can_not_like
-
-  private
-
-    def author_can_not_like
-      return unless author_id == likeable.author_id
-
-      errors.add(:user, "can not like their own post.")
-    end
 end

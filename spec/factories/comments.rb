@@ -18,5 +18,10 @@ FactoryBot.define do
     commentable_id { "" }
     commentable_type { "" }
     author_id { "" }
+
+    trait :with_text_post do
+      association(:commentable, factory: %i[text_post with_author])
+      association(:author, factory: :user)
+    end
   end
 end

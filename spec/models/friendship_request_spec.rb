@@ -14,5 +14,10 @@
 require 'rails_helper'
 
 RSpec.describe FriendshipRequest, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:friendship_request) { create(:friendship_request, :with_two_users) }
+
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to belong_to(:requested_friend) }
+  it { is_expected.to have_one(:notification) }
+  it { is_expected.to define_enum_for(:status) }
 end

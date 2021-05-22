@@ -18,26 +18,9 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  context "when a user tries to like same post twice" do
-    # 2 Users, 1 Post, 1 Like
-    let!(:amy) { create(:user, first_name: 'Amy') }
-    let!(:beth) { create(:user, first_name: 'Beth') }
-    let!(:amy_post) { create(:text_post, author: amy) }
-    let!(:beth_like) { create(:like, author: beth, likeable: amy_post) }
+  subject(:like) { create(:like, :with_post) }
 
-    it "raises an Invalid Record error" do
-      expect { create(:like, author: beth, likeable: amy_post) }.to raise_error(ActiveRecord::RecordInvalid)
-    end
-  end
-
-  context "when post author tries to like their post" do
-    # 2 Users, 1 Post, 1 Like
-    let!(:amy) { create(:user, first_name: 'Amy') }
-    let!(:beth) { create(:user, first_name: 'Beth') }
-    let!(:amy_post) { create(:text_post, author: amy) }
-
-    it "raises an Invalid Record error" do
-      expect { create(:like, author: amy, likeable: amy_post) }.to raise_error(ActiveRecord::RecordInvalid)
-    end
-  end
+  it { is_expected.to belong_to(:author) }
+  it { is_expected.to belong_to(:likeable) }
+  it { is_expected.to validate_uniqueness_of(:author).scoped_to(%i[likeable_id likeable_type]) }
 end

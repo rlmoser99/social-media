@@ -16,6 +16,6 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   subject(:post) { create(:post) }
 
-  it { should belong_to(:postable) }
-  it { should belong_to(:author) }
+  it { is_expected.to belong_to(:postable) }
+  it { is_expected.to belong_to(:author) }
 end

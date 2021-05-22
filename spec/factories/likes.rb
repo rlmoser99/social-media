@@ -20,5 +20,10 @@ FactoryBot.define do
     author_id { "" }
     likeable_id { "" }
     likeable_type { "Post" }
+
+    trait :with_post do
+      association(:likeable, factory: %i[text_post with_author])
+      association(:author, factory: :user)
+    end
   end
 end
