@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class NotificationsController < ApplicationController
+  before_action :authenticate_user!
   after_action :update_notifications, only: :index
 
   def index

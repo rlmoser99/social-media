@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class NewsFeedsController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = current_user
     @feed = Post.where(author_id: @user.friends).or(Post.where(author_id: @user))

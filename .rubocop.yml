@@ -39,6 +39,7 @@ Metrics/MethodLength:
   Exclude:
   - app/models/user.rb
   - db/migrate/*.rb
+  - spec/support/oauth.rb
 
 Rails/BulkChangeTable:
   Exclude:

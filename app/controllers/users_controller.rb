@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @sent_requests = current_user.friendship_requests.includes([{ requested_friend: [avatar_attachment: :blob] }])
     @received_requests = current_user.requested_friendships.includes([{ user: [avatar_attachment: :blob] }])

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PhotoPostsController < ApplicationController
+  before_action :authenticate_user!
+
   include Newsfeedable
 
   def show

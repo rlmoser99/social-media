@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class FriendshipRequestsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_friendship_request, only: %i[edit update destroy]
 
   def new
