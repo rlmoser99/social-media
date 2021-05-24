@@ -17,7 +17,7 @@
   <%= cl_image_tag photo_post.image.key, class: 'photo-image' %>
   <p class="photo-description"><%= photo_post.description %></p>
   <div class="photo-actions">
-    <%= render partial: 'likes/new', locals: { likeable: photo_post } %>
+    <%= render partial: 'likes/like', locals: { likeable: photo_post, like: photo_post.find_like_by_user(current_user) } %>
     <% photo_post.comments&.each do |comment| %>
       <%= render partial: 'comments/comments', locals: { comment: comment } %>
     <% end %>

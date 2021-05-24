@@ -12,6 +12,8 @@
 #  author_id   :bigint
 #
 class TextPost < ApplicationRecord
+  include HasLikes
+
   belongs_to :author, class_name: "User", dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy

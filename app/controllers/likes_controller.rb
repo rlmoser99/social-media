@@ -19,9 +19,16 @@ class LikesController < ApplicationController
     redirect_back fallback_location: newsfeed_path
   end
 
+  def destroy
+    @like = Like.find_by(like_params)
+    @like.destroy
+    flash[:notice] = "Your like has been removed."
+    redirect_back fallback_location: newsfeed_path
+  end
+
   private
 
     def like_params
-      params.permit(:user_id)
+      params.permit(:id, :likeable_id, :user_id)
     end
 end

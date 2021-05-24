@@ -10,6 +10,7 @@ Rails.application.configure do
     Bullet.console       = false
     Bullet.rails_logger  = true
     Bullet.add_footer    = true
+    Bullet.unused_eager_loading_enable = false
   end
 
   # Settings specified here will take precedence over those in config/application.rb.
