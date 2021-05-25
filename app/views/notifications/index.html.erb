@@ -3,6 +3,7 @@
   <% @notifications&.each do |notification| %>
 
     <% if notification.friendship_request? %>
+      <p>Friend Request:</p>
       <%= render partial: 'friendship_requests/show',
                   locals: { request: notification.notifiable,
                             inverse_friend: notification.notifiable.user,
