@@ -15,5 +15,6 @@
 class Comment < ApplicationRecord
   belongs_to :author, class_name: "User", dependent: :destroy
   belongs_to :commentable, polymorphic: true
+  delegated_type :commentable, types: %w[TextPost PhotoPost]
   has_one :notification, as: :notifiable, dependent: :destroy
 end

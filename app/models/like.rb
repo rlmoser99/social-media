@@ -17,6 +17,6 @@
 #
 class Like < ApplicationRecord
   belongs_to :author, class_name: "User"
-  belongs_to :likeable, polymorphic: true, counter_cache: true
+  delegated_type :likeable, types: %w[TextPost PhotoPost], counter_cache: true
   validates :author, uniqueness: { scope: %i[likeable_id likeable_type] }
 end

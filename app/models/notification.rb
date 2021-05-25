@@ -13,7 +13,7 @@
 #  recipient_id    :bigint
 #
 class Notification < ApplicationRecord
-  belongs_to :notifiable, polymorphic: true
+  delegated_type :notifiable, types: %w[FriendshipRequest Comment Like]
   belongs_to :recipient, class_name: 'User'
 
   scope :unread, -> { where(read_at: nil) }
