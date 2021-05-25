@@ -22,6 +22,7 @@ class LikesController < ApplicationController
   def destroy
     @like = Like.find_by(like_params)
     @like.destroy
+    NotificationDestroyer.new(@like, @like.likeable.author).call
     flash[:notice] = "Your like has been removed."
     redirect_back fallback_location: newsfeed_path
   end

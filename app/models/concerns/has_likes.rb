@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HasLikes
   extend ActiveSupport::Concern
 
