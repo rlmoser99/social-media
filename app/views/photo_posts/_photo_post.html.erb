@@ -7,17 +7,24 @@
         <p><small><%= time_ago_in_words(photo_post.created_at) %> ago</small></p>
       </div>
     </div>
-    <div class="like-count">
-      <% if photo_post.likes_count > 0 %>
-        <small><%= photo_post.likes_count %></small>
-        <span class="material-icons">thumb_up</span>
+    <%= render partial: 'likes/like', locals: { likeable: photo_post } %>
+  </div>
+  <div class="photo-content">
+    <div class="author-actions">
+      <% if photo_post.author == current_user %>
+        <%= link_to edit_photo_post_path(photo_post) do %>
+          <span class="material-icons">edit</span>
+        <% end %>
+        <%= link_to photo_post_path(id: photo_post.id), {:controller => :photo_post, :method => 'delete' } do %>
+          <span class="material-icons">delete</span>
+        <% end %>
       <% end %>
     </div>
+    <%= cl_image_tag photo_post.image.key, class: 'photo-image' %>
   </div>
-  <%= cl_image_tag photo_post.image.key, class: 'photo-image' %>
   <p class="photo-description"><%= photo_post.description %></p>
   <div class="photo-actions">
-    <%= render partial: 'likes/like', locals: { likeable: photo_post, like: photo_post.find_like_by_user(current_user) } %>
+    <%= render partial: 'likes/form', locals: { likeable: photo_post, like: photo_post.find_like_by_user(current_user) } %>
     <% photo_post.comments&.each do |comment| %>
       <%= render partial: 'comments/comments', locals: { comment: comment } %>
     <% end %>

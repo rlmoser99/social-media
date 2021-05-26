@@ -7,16 +7,23 @@
         <p><small><%= time_ago_in_words(text_post.created_at) %> ago</small></p>
       </div>
     </div>
-    <div class="like-count">
-      <% if text_post.likes_count > 0 %>
-        <small><%= text_post.likes_count %></small>
-        <span class="material-icons">thumb_up</span>
+    <%= render partial: 'likes/like', locals: { likeable: text_post } %>
+  </div>
+  <div class="post-content">
+    <div class="author-actions">
+      <% if text_post.author == current_user %>
+        <%= link_to edit_text_post_path(text_post) do %>
+          <span class="material-icons">edit</span>
+        <% end %>
+        <%= link_to text_post_path(id: text_post.id), {:controller => :text_post, :method => 'delete' } do %>
+          <span class="material-icons">delete</span>
+        <% end %>
       <% end %>
     </div>
+    <p><%= text_post.content %></p>
   </div>
-  <p class="post-content"><%= text_post.content %></p>
-  <div class="post-actions">
-    <%= render partial: 'likes/like', locals: { likeable: text_post, like: text_post.find_like_by_user(current_user) } %>
+  <div class="post-responses">
+    <%= render partial: 'likes/form', locals: { likeable: text_post, like: text_post.find_like_by_user(current_user) } %>
     <% text_post.comments&.each do |comment| %>
       <%= render partial: 'comments/comments', locals: { comment: comment } %>
     <% end %>

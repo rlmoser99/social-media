@@ -13,5 +13,5 @@
 #
 class Post < ApplicationRecord
   delegated_type :postable, types: %w[TextPost PhotoPost]
-  belongs_to :author, class_name: "User", dependent: :destroy
+  belongs_to :author, class_name: "User"
 end

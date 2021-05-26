@@ -1,0 +1,10 @@
+<div class="post-form">
+  <%= form_with model: @text_post do |f| %>
+    <%= f.text_area :content, cols: 120, rows: 5 %>
+
+    <%= button_tag :submit do %>
+      <span class="material-icons">add</span>
+      <span class="material-icons">chat_bubble</span>
+    <% end %>
+  <% end %>
+</div>

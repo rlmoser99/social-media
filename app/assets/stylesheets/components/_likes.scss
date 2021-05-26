@@ -1,5 +1,6 @@
 .like-count {
   align-items: center;
+  color: $color-accent-blue;
   display: flex;
 
   * > { flex: 0 1 auto; }
@@ -7,9 +8,8 @@
   span {
     background-color: $color-dark-gray;
     border-radius: 50%;
-    color: $color-accent-green;
     font-size: 1.2rem;
-    margin-left: calc(var(--spacing) / 2);
+    margin-left: .5rem;
     padding: 8px;
   }
 }

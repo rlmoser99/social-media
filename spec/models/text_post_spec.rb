@@ -16,7 +16,7 @@ require 'rails_helper'
 RSpec.describe TextPost, type: :model do
   subject(:text_post) { create(:text_post, :with_author) }
 
-  it { is_expected.to belong_to(:author).dependent(:destroy) }
+  it { is_expected.to belong_to(:author) }
   it { is_expected.to have_many(:likes).dependent(:destroy) }
   it { is_expected.to have_many(:comments).dependent(:destroy) }
   it { is_expected.to have_one(:post).dependent(:destroy) }

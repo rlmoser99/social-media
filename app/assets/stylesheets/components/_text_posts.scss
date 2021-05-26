@@ -16,7 +16,7 @@
   }
 
   &-content {
-    padding: 1rem 0;
+    @include author-options;
   }
 }
 
@@ -31,6 +31,15 @@
     strong {
       color: $color-accent-blue;
       font-size: 1.2rem;
+    }
+  }
+}
+
+@media screen and (min-width: $tablet) {
+  .post {
+    &-content {
+      @include author-options-tablet;
+
     }
   }
 }

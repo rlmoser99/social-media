@@ -102,3 +102,42 @@
   margin: var(--spacing) 0;
   padding: var(--spacing);
 }
+
+@mixin author-options {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+
+  * > { flex: 0 1 auto; }
+
+  .author-actions {
+    align-self: flex-end;
+    display: flex;
+    margin-left: var(--spacing);
+
+    * > { flex: 0 1 auto; }
+
+    a {
+      color: $color-dark-gray;
+      text-decoration: none;
+
+      &:hover {
+        color: $color-accent-green;
+      }
+    }
+
+    span {
+      margin-left: .5rem;
+    }
+  }
+}
+
+@mixin author-options-tablet {
+  flex-direction: row;
+  justify-content: space-between;
+
+  .author-actions {
+    order: 2;
+    align-self: flex-start;
+  }
+}

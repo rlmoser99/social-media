@@ -2,6 +2,8 @@
 
 class PhotoPostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_photo_post, only: %i[edit update destroy]
+  before_action :require_authorization, only: %i[edit update destroy]
 
   include Newsfeedable
 
@@ -27,9 +29,34 @@ class PhotoPostsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @photo_post.update(photo_params)
+      flash[:notice] = "Your post was updated!"
+      redirect_to newsfeed_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @photo_post.destroy
+
+    redirect_to newsfeed_path
+  end
+
   private
 
     def photo_params
-      params.require(:photo_post).permit(:image, :description)
+      params.require(:photo_post).permit(:id, :image, :description)
+    end
+
+    def set_photo_post
+      @photo_post = PhotoPost.find(params[:id])
+    end
+
+    def require_authorization
+      redirect_to :root unless current_user == @photo_post.author
     end
 end

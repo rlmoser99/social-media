@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show new create edit update]
   resources :friendship_requests, only: %i[new create edit update destroy]
   resources :notifications, only: %i[index]
-  resources :text_posts, only: %i[new create show] do
+  resources :text_posts, only: %i[new create show edit update destroy] do
     resources :comments, only: %i[new create], module: :text_posts
     resources :likes, only: %i[new create destroy], module: :text_posts
   end
-  resources :photo_posts, only: %i[new create show] do
+  resources :photo_posts, only: %i[new create show edit update destroy] do
     resources :comments, only: %i[new create], module: :photo_posts
     resources :likes, only: %i[new create destroy], module: :photo_posts
   end

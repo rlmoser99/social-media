@@ -1,0 +1,13 @@
+<div class="like-form">
+  <% if like %>
+    <%= button_to [ likeable, like ], method: :delete, form_class: "form-button" do %>
+      <span class="material-icons">remove</span>
+      <span class="material-icons">thumb_up</span>
+    <% end %>
+  <% else %>
+    <%= button_to [ likeable, Like.new ], method: :post, form_class: "form-button" do %>
+      <span class="material-icons">add</span>
+      <span class="material-icons">thumb_up</span>
+    <% end %>
+  <% end %>
+</div>

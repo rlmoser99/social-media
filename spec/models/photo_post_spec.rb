@@ -17,7 +17,7 @@ require 'rails_helper'
 RSpec.describe PhotoPost, type: :model do
   subject(:photo_post) { create(:photo_post, :with_author) }
 
-  it { is_expected.to belong_to(:author).dependent(:destroy) }
+  it { is_expected.to belong_to(:author) }
   it { is_expected.to have_many(:likes).dependent(:destroy) }
   it { is_expected.to have_many(:comments).dependent(:destroy) }
   it { is_expected.to have_one(:post).dependent(:destroy) }
