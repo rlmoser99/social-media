@@ -48,7 +48,7 @@ class CommentsController < ApplicationController
     end
 
     def authored_post?
-      @comment.commentable.author == current_user
+      @commentable.author == current_user
     end
 
     def set_comment

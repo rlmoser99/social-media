@@ -8,7 +8,7 @@ class NotificationDestroyer
 
   def call
     notification = Notification.find_by(notifiable: @notifiable, recipient: @recipient)
-    return unless notification.read_at.nil?
+    return if notification.nil? || notification.read_at
 
     notification.destroy
     @recipient.update(unread_notifications_count: @recipient.unread_notifications_count - 1)

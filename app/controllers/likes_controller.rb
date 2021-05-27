@@ -11,10 +11,8 @@ class LikesController < ApplicationController
     @like = @likeable.likes.new(like_params)
     @like.author = current_user
     if @like.save
-      NotificationCreator.new(@like, @like.likeable.author).call
+      NotificationCreator.new(@like, @like.likeable.author).call unless authored_like?
       flash[:notice] = "Your like has been saved."
-    else
-      flash[:alert] = "Your like has not been saved."
     end
     redirect_back fallback_location: newsfeed_path
   end
@@ -31,5 +29,9 @@ class LikesController < ApplicationController
 
     def like_params
       params.permit(:id, :likeable_id, :user_id)
+    end
+
+    def authored_like?
+      @likeable.author == current_user
     end
 end
