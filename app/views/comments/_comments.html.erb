@@ -6,10 +6,10 @@
         <p><strong><%= comment.author.full_name %></strong></p>
         <div class="comment-author-actions">
           <% if comment.author == current_user %>
-            <%= link_to edit_comment_path(comment) do %>
+            <%= link_to edit_comment_path(comment), title: "Edit Comment"  do %>
               <span class="material-icons">edit</span>
             <% end %>
-            <%= link_to comment_path(comment), method: 'delete' do %>
+            <%= link_to comment_path(comment), method: 'delete', title: "Delete Comment"  do %>
               <span class="material-icons">delete</span>
             <% end %>
           <% end %>

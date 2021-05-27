@@ -12,10 +12,10 @@
   <div class="photo-content">
     <div class="author-actions">
       <% if photo_post.author == current_user %>
-        <%= link_to edit_photo_post_path(photo_post) do %>
+        <%= link_to edit_photo_post_path(photo_post), title: "Edit Post" do %>
           <span class="material-icons">edit</span>
         <% end %>
-        <%= link_to photo_post_path(id: photo_post.id), {:controller => :photo_post, :method => 'delete' } do %>
+        <%= link_to photo_post_path(photo_post), {:controller => :photo_post, :method => 'delete', :title => "Delete Post" } do %>
           <span class="material-icons">delete</span>
         <% end %>
       <% end %>

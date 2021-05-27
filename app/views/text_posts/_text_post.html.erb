@@ -12,10 +12,10 @@
   <div class="post-content">
     <div class="author-actions">
       <% if text_post.author == current_user %>
-        <%= link_to edit_text_post_path(text_post) do %>
+        <%= link_to edit_text_post_path(text_post), title: "Edit Post" do %>
           <span class="material-icons">edit</span>
         <% end %>
-        <%= link_to text_post_path(id: text_post.id), {:controller => :text_post, :method => 'delete' } do %>
+        <%= link_to text_post_path(text_post), {:controller => :text_post, :method => 'delete', :title => "Delete Post" } do %>
           <span class="material-icons">delete</span>
         <% end %>
       <% end %>
