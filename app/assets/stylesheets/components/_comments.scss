@@ -9,14 +9,42 @@
     border-left: 3px solid $color-accent-green;
     display: flex;
     margin: var(--spacing) 0;
-    padding: 5px var(--spacing);
+    padding: 1rem var(--spacing);
 
     * > { flex: 0 1 auto; }
   }
 
-  &-content {
-    strong {
-      color: $color-accent-green;
+  &-heading {
+    display: flex;
+
+    * > { flex: 0 1 auto; }
+
+    .author-info {
+      display: flex;
+      flex: 1 1 auto;
+      justify-content: space-between;
+
+      strong {
+        color: $color-accent-green;
+        font-size: 1.1rem;
+      }
     }
+
+    .comment-author-actions {
+      padding-left: 1rem;
+
+      a {
+        color: $color-primary-gray;
+        text-decoration: none;
+
+        &:hover {
+          color: $color-accent-green;
+        }
+      }
+    }
+  }
+
+  &-content {
+    flex: 1 1 auto;
   }
 }

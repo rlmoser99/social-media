@@ -1,0 +1,11 @@
+<div class="comment-form">
+  <%= form_with(model: @comment) do |f| %>
+
+    <%= f.text_area :content, cols: 120, rows: 4 %>
+
+    <%= button_tag :submit do %>
+      <span class="material-icons">add</span>
+      <span class="material-icons">forum</span>
+    <% end %>
+  <% end %>
+</div>

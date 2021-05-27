@@ -1,7 +1,21 @@
 <div class="comment-container">
   <%= render partial: 'users/avatar', locals: { user: comment.author } %>
   <div class="comment-content">
-    <p><strong><%= comment.author.full_name %></strong></p>
+    <div class="comment-heading">
+      <div class="author-info">
+        <p><strong><%= comment.author.full_name %></strong></p>
+        <div class="comment-author-actions">
+          <% if comment.author == current_user %>
+            <%= link_to edit_comment_path(comment) do %>
+              <span class="material-icons">edit</span>
+            <% end %>
+            <%= link_to comment_path(comment), method: 'delete' do %>
+              <span class="material-icons">delete</span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
     <p><%= comment.content %></p>
   </div>
 </div>
