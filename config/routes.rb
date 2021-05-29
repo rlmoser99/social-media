@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root to: "users#show"
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: "users/omniauth_callbacks" }
   get 'newsfeed', action: :show, controller: 'news_feeds'
-  resources :users, only: %i[index show new create edit update]
+  resources :users, only: %i[index show edit update]
   resources :friendship_requests, only: %i[new create edit update destroy]
   resources :notifications, only: %i[index]
   resources :comments, only: %i[edit update destroy]

@@ -3,29 +3,21 @@
 require "rails_helper"
 
 RSpec.describe NotificationUpdater do
-  # 2 Users & their Friendship Request
-  let!(:amy) { create(:user, first_name: 'Amy') }
-  let!(:beth) { create(:user, first_name: 'Beth') }
-  let!(:amy_beth) { create(:friendship_request, user: amy, requested_friend: beth) }
-  let!(:notification) { create(:notification, :new, recipient: beth, notifiable: amy_beth) }
+  # 2 Users, a Friendship Request, and a Notification
+  let!(:user) { create(:user) }
+  let!(:friend) { create(:user) }
+  let!(:friendship_request) { create(:friendship_request, user: user, requested_friend: friend) }
+  let!(:notification) { create(:notification, :new, recipient: friend, notifiable: friendship_request) }
 
-  context "before the notification is updated" do
-    it "the read_at attribute is nil" do
-      expect(notification.read_at).to be nil
-    end
+  before do
+    NotificationUpdater.new(notification).call
   end
 
-  context "after the notification is updated" do
-    it "the read_at attribute is no longer nil" do
-      updater = NotificationUpdater.new(notification)
-      updater.call
-      expect(notification.read_at).not_to be nil
-    end
+  it "updates the notification's read_at attribute to no longer be nil" do
+    expect(notification.read_at).not_to be nil
+  end
 
-    it "sets unread notification for recipient to 0" do
-      updater = NotificationUpdater.new(notification)
-      updater.call
-      expect(beth.unread_notifications_count).to eq(0)
-    end
+  it "sets the recipient's unread_notification_count to 0" do
+    expect(friend.unread_notifications_count).to eq(0)
   end
 end

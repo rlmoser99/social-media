@@ -4,31 +4,19 @@ require "rails_helper"
 
 RSpec.describe NotificationCreator do
   # 2 Users & their Friendship Request
-  let!(:amy) { create(:user, first_name: 'Amy') }
-  let!(:beth) { create(:user, first_name: 'Beth') }
-  let!(:amy_beth) { create(:friendship_request, user: amy, requested_friend: beth) }
+  let!(:user) { create(:user) }
+  let!(:friend) { create(:user) }
+  let!(:friendship_request) { create(:friendship_request, user: user, requested_friend: friend) }
 
-  context "before the notification is created" do
-    it "the requested friend has no notifications" do
-      expect(beth.notifications.count).to eq(0)
-    end
-
-    it "the requested friend has no unread notification" do
-      expect(beth.unread_notifications_count).to eq(0)
-    end
+  before do
+    NotificationCreator.new(friendship_request, friend).call
   end
 
-  context "after the notification is created" do
-    it "creates a notification for requested friend" do
-      creator = NotificationCreator.new(amy_beth, beth)
-      creator.call
-      expect(beth.notifications.count).to eq(1)
-    end
+  it "creates a notification for requested friend" do
+    expect(friend.notifications.count).to eq(1)
+  end
 
-    it "creates a new unread notification for requested friend" do
-      creator = NotificationCreator.new(amy_beth, beth)
-      creator.call
-      expect(beth.unread_notifications_count).to eq(1)
-    end
+  it "increases the requested friend's unread_notification_count" do
+    expect(friend.unread_notifications_count).to eq(1)
   end
 end
