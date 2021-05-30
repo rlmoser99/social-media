@@ -25,9 +25,10 @@
   <p class="photo-description"><%= photo_post.description %></p>
   <div class="photo-actions">
     <%= render partial: 'likes/form', locals: { likeable: photo_post, like: photo_post.find_like_by_user(current_user) } %>
-    <% photo_post.comments&.each do |comment| %>
-      <%= render partial: 'comments/comments', locals: { comment: comment } %>
+    <%= turbo_stream_from photo_post, :comments %>
+    <%= tag.div id: "#{dom_id(photo_post)}_comments" do %>
+      <%= render photo_post.comments %>
     <% end %>
-    <%= render partial: 'comments/form', locals: { commentable: photo_post } %>
+    <%= render partial: 'comments/form', locals: { commentable: photo_post, comment: Comment.new } %>
   </div>
 </div>

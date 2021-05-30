@@ -16,6 +16,7 @@ RSpec.describe "user login", type: :system do
       click_on("Log in")
 
       expect(page).to have_current_path(user_session_path)
+
       expect(page).to have_content "Invalid Email or password."
     end
   end

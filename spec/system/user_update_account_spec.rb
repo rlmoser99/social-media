@@ -16,7 +16,7 @@ RSpec.describe "user sign up", type: :system do
       expect(page).to have_current_path(edit_user_registration_path)
 
       new_email = "jubal@early.com"
-      within 'form' do
+      within '#edit_user' do
         fill_in("user[email]", with: new_email)
         fill_in("user[current_password]", with: user.password)
         find_submit_btn.click
@@ -62,6 +62,9 @@ RSpec.describe "user sign up", type: :system do
     it 'changes account information successfully' do
       visit(new_user_registration_path)
       click_on("Sign in with Facebook")
+
+      expect(page).to have_current_path(root_path)
+
       visit(edit_user_registration_path)
       new_email = "jubal@early.com"
       within '#edit_user' do

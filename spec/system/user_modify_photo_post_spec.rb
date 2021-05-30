@@ -8,17 +8,14 @@ RSpec.describe "user modifies a photo post", type: :system do
   let!(:user) { create(:user) }
   let!(:photo_post) { create(:photo_post, author: user, description: "This is sample photo description.") }
 
-  it "successfully edits and deletes" do
+  before do
     sign_in(user)
     visit(newsfeed_path)
+  end
 
+  it "successfully edits" do
     within '.photo-container' do
       expect(page).to have_content(photo_post.description)
-    end
-
-    within '.author-actions' do
-      expect(page).to have_link('', href: edit_photo_post_path(photo_post))
-      expect(page).to have_link('', href: photo_post_path(photo_post))
     end
 
     within '.author-actions' do
@@ -32,16 +29,15 @@ RSpec.describe "user modifies a photo post", type: :system do
       find_submit_button.click
     end
 
-    within '.photo-container' do
-      expect(page).to have_no_content(photo_post.description)
-      expect(page).to have_content("This is the edited description.")
-    end
+    expect(find('.photo-description')).to have_content("This is the edited description.")
+  end
 
+  it "successfully deletes" do
     within '.author-actions' do
       page.click_link('', href: photo_post_path(photo_post))
     end
 
     expect(page).to have_no_css('.photo-container')
-    expect(page).to have_no_content("This is the edited description.")
+    expect(user.photo_posts.count).to eq(0)
   end
 end

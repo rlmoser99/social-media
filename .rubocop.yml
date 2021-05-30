@@ -23,8 +23,13 @@ Layout/LineLength:
     - config/**/*.rb
     - lib/tasks/sample_data.rake
 
+Lint/EmptyBlock:
+  Exclude:
+    - app/controllers/comments_controller.rb
+
 Metrics/AbcSize:
   Exclude:
+  - app/controllers/comments_controller.rb
   - app/models/user.rb
   - db/migrate/*.rb
 
@@ -37,6 +42,7 @@ Metrics/BlockLength:
 
 Metrics/MethodLength:
   Exclude:
+  - app/controllers/comments_controller.rb
   - app/models/user.rb
   - db/migrate/*.rb
   - spec/support/oauth.rb
@@ -62,3 +68,7 @@ Style/StringLiterals:
 Style/BlockComments:
   Exclude:
     - spec/spec_helper.rb
+
+Style/GuardClause:
+  Exclude:
+    - app/controllers/users/devise_controller.rb

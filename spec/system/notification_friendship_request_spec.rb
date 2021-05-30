@@ -10,6 +10,11 @@ RSpec.describe "notification for friendship request", type: :system do
     sign_in(friend)
     visit(users_path)
     click_on("Add Friend")
+
+    within(".friend-container") do
+      expect(page).to have_css("input[value='Delete Request']")
+    end
+
     sign_out(friend)
     user.reload
     sign_in(user)

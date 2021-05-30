@@ -8,17 +8,14 @@ RSpec.describe "user modifies a text post", type: :system do
   let!(:user) { create(:user) }
   let!(:text_post) { create(:text_post, author: user, content: "This is sample post content.") }
 
-  it "successfully edits and deletes" do
+  before do
     sign_in(user)
     visit(newsfeed_path)
+  end
 
+  it "successfully edits" do
     within '.post-container' do
       expect(page).to have_content(text_post.content)
-    end
-
-    within '.author-actions' do
-      expect(page).to have_link('', href: edit_text_post_path(text_post))
-      expect(page).to have_link('', href: text_post_path(text_post))
     end
 
     within '.author-actions' do
@@ -32,16 +29,15 @@ RSpec.describe "user modifies a text post", type: :system do
       find_submit_button.click
     end
 
-    within '.post-container' do
-      expect(page).to have_no_content(text_post.content)
-      expect(page).to have_content("This is the edited content.")
-    end
+    expect(find('.post-content')).to have_content("This is the edited content.")
+  end
 
+  it "successfully deletes" do
     within '.author-actions' do
       page.click_link('', href: text_post_path(text_post))
     end
 
     expect(page).to have_no_css('.post-container')
-    expect(page).to have_no_content("This is the edited content.")
+    expect(user.text_posts.count).to eq(0)
   end
 end

@@ -17,10 +17,10 @@ RSpec.describe "user can update their avatar", type: :system do
     page.attach_file('user[avatar]', Rails.root.join('spec/support/assets/avatar.png'))
     click_button "Update Avatar"
 
-    expect(user.avatar.attached?).to be true
     within '.avatar' do
       expect(page).to have_selector('img')
       expect(page).to have_no_selector('span.material-icons')
     end
+    expect(user.avatar.attached?).to be true
   end
 end

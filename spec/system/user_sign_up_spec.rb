@@ -8,7 +8,7 @@ RSpec.describe "user sign up", type: :system do
   context 'with valid credentials' do
     it 'signs up successfully' do
       visit(new_user_registration_path)
-      within 'form' do
+      within '#new_user' do
         fill_in "First name", with: "Jubal"
         fill_in "Last name", with: "Early"
         fill_in "Email", with: "jubal@bountyhunter.gov"
@@ -24,7 +24,7 @@ RSpec.describe "user sign up", type: :system do
   context 'with invalid credentials' do
     it 'shows error messages' do
       visit(new_user_registration_path)
-      within 'form' do
+      within '#new_user' do
         fill_in "First name", with: "Jubal"
         fill_in "Last name", with: "Early"
         fill_in "Email", with: "jubal@bountyhunter.gov"
@@ -35,7 +35,7 @@ RSpec.describe "user sign up", type: :system do
 
       expect(page).to have_content(/prohibited this user from being saved./)
       expect(page).to have_content("Password confirmation doesn't match Password")
-      expect(page).to have_current_path(users_path)
+      expect(page).to have_current_path(new_user_registration_path)
     end
   end
 

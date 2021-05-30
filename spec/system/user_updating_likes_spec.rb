@@ -25,19 +25,19 @@ RSpec.describe "user adding and removing likes ", type: :system do
       find_submit_button.click
     end
 
-    expect(friend.reload.unread_notifications_count).to eq(1)
     within '.like-count' do
       expect(page).to have_content("1")
       expect(page).to have_css('span.material-icons')
     end
+    expect(friend.reload.unread_notifications_count).to eq(1)
 
     within '.like-form' do
       find_submit_button.click
     end
 
-    expect(friend.reload.unread_notifications_count).to eq(0)
     within '.like-count' do
       expect(page).to have_no_css('span.material-icons')
     end
+    expect(friend.reload.unread_notifications_count).to eq(0)
   end
 end

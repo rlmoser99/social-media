@@ -18,6 +18,11 @@ RSpec.describe "notification for comment", type: :system do
     within(".like-form") do
       find_submit_button.click
     end
+
+    within(".like-count") do
+      expect(page).to have_content(1)
+    end
+
     sign_out(friend)
     user.reload
     sign_in(user)

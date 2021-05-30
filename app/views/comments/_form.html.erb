@@ -1,11 +1,15 @@
 <div class="comment-form">
-  <%= form_with(model: [ commentable, Comment.new ]) do |f| %>
+  <% model = [local_assigns[:commentable], comment].compact %>
 
-    <%= f.text_area :content, cols: 120, rows: 4 %>
+  <%= form_with(model: model, id: dom_id_for_records(*model)) do |f| %>
+
+    <%= f.text_area :content, cols: 120, rows: 4, required: true %>
 
     <%= button_tag :submit do %>
       <span class="material-icons">add</span>
       <span class="material-icons">forum</span>
     <% end %>
+
+    <%= link_to "Cancel", comment if f.object.persisted? %>
   <% end %>
 </div>
