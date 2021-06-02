@@ -26,6 +26,8 @@ Layout/LineLength:
 Lint/EmptyBlock:
   Exclude:
     - app/controllers/comments_controller.rb
+    - app/controllers/photo_posts_controller.rb
+    - app/controllers/text_posts_controller.rb
 
 Metrics/AbcSize:
   Exclude:

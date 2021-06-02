@@ -1,10 +1,36 @@
-<div class="post-form">
-  <%= form_with model: @text_post do |f| %>
-    <%= f.text_area :content, cols: 120, rows: 5 %>
+<%= turbo_frame_tag dom_id(@text_post) do %>
+  <div class="post-container">
+    <div class="post-header">
+      <div class="header-profile">
+        <%= render partial: 'users/avatar', locals: { user: @text_post.author } %>
+        <div class="header-content">
+          <p><strong><%= @text_post.author.full_name %></strong></p>
+          <p><small><%= time_ago_in_words(@text_post.created_at) %> ago</small></p>
+        </div>
+      </div>
+      <%= render partial: 'likes/like', locals: { likeable: @text_post } %>
+    </div>
+    <div class="post-content">
+        <div class="post-form">
+        <%= form_with model: @text_post do |f| %>
+          <%= f.text_area :content, cols: 120, rows: 5 %>
 
-    <%= button_tag :submit do %>
-      <span class="material-icons">add</span>
-      <span class="material-icons">chat_bubble</span>
-    <% end %>
-  <% end %>
-</div>
+          <%= button_tag :submit do %>
+            <span class="material-icons">add</span>
+            <span class="material-icons">chat_bubble</span>
+          <% end %>
+        <% end %>
+        <%= link_to "Cancel", @text_post %>
+      </div>
+    </div>
+    <div class="post-responses">
+      <%# NEED TO ADJUST CURRENT_USER FUNCTIONALITY %>
+      <%#= render partial: 'likes/form', locals: { likeable: @text_post, like: @text_post.find_like_by_user(current_user) } %>
+      <%= turbo_stream_from @text_post, :comments %>
+      <%= tag.div id: "#{dom_id(@text_post)}_comments" do %>
+        <%= render @text_post.comments %>
+      <% end %>
+      <%= render partial: 'comments/form', locals: { commentable: @text_post, comment: Comment.new } %>
+    </div>
+  </div>
+<% end %>

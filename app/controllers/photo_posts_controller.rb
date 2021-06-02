@@ -3,7 +3,7 @@
 class PhotoPostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_photo_post, only: %i[edit update destroy]
-  before_action :require_authorization, only: %i[edit update destroy]
+  before_action :require_authorization, only: %i[edit update]
 
   include Newsfeedable
 
@@ -33,17 +33,18 @@ class PhotoPostsController < ApplicationController
 
   def update
     if @photo_post.update(photo_params)
-      flash[:notice] = "Your post was updated!"
-      redirect_to newsfeed_path
+      redirect_to @photo_post
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @photo_post.destroy
-
-    redirect_to newsfeed_path
+    @photo_post.destroy if authored_post?
+    respond_to do |format|
+      format.turbo_stream {}
+      format.html { redirect_to newsfeed_path, notice: "Your post was successfully deleted." }
+    end
   end
 
   private
@@ -52,11 +53,15 @@ class PhotoPostsController < ApplicationController
       params.require(:photo_post).permit(:id, :image, :description)
     end
 
+    def authored_post?
+      @photo_post.author == current_user
+    end
+
     def set_photo_post
       @photo_post = PhotoPost.find(params[:id])
     end
 
     def require_authorization
-      redirect_to :root unless current_user == @photo_post.author
+      redirect_to :root unless authored_post?
     end
 end

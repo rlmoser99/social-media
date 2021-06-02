@@ -22,8 +22,6 @@ RSpec.describe "user modifies a text post", type: :system do
       page.click_link('', href: edit_text_post_path(text_post))
     end
 
-    expect(page).to have_current_path(edit_text_post_path(text_post))
-
     within '.post-form' do
       fill_in("text_post[content]", with: "This is the edited content.")
       find_submit_button.click

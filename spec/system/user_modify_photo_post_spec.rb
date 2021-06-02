@@ -22,8 +22,6 @@ RSpec.describe "user modifies a photo post", type: :system do
       page.click_link('', href: edit_photo_post_path(photo_post))
     end
 
-    expect(page).to have_current_path(edit_photo_post_path(photo_post))
-
     within '.photo-form' do
       fill_in("photo_post[description]", with: "This is the edited description.")
       find_submit_button.click

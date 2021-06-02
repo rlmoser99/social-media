@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  extend ActiveSupport::Concern
   include ActionView::RecordIdentifier
   include RecordHelper
 

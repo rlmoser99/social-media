@@ -3,7 +3,7 @@
 class TextPostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_text_post, only: %i[edit update destroy]
-  before_action :require_authorization, only: %i[edit update destroy]
+  before_action :require_authorization, only: %i[edit update]
 
   include Newsfeedable
 
@@ -32,17 +32,18 @@ class TextPostsController < ApplicationController
 
   def update
     if @text_post.update(text_post_params)
-      flash[:notice] = "Your post was updated!"
-      redirect_to newsfeed_path
+      redirect_to @text_post
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @text_post.destroy
-
-    redirect_to newsfeed_path
+    @text_post.destroy if authored_post?
+    respond_to do |format|
+      format.turbo_stream {}
+      format.html { redirect_to newsfeed_path, notice: "Your post was successfully deleted." }
+    end
   end
 
   private
@@ -51,11 +52,15 @@ class TextPostsController < ApplicationController
       params.require(:text_post).permit(:id, :content)
     end
 
+    def authored_post?
+      @text_post.author == current_user
+    end
+
     def set_text_post
       @text_post = TextPost.find(params[:id])
     end
 
     def require_authorization
-      redirect_to :root unless current_user == @text_post.author
+      redirect_to :root unless authored_post?
     end
 end

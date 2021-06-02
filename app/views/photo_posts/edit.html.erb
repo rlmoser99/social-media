@@ -1,14 +1,41 @@
-<div class="photo-form">
-  <%= form_with model: @photo_post do |f| %>
-
-    <div class="form-fields">
-      <%= f.file_field :image %>
-      <%= f.text_area :description, cols: 120, rows: 2, placeholder: "Describe your photo" %>
+<%= turbo_frame_tag dom_id(@photo_post) do %>
+  <div class="photo-container">
+    <div class="photo-header">
+      <div class="header-profile">
+        <%= render partial: 'users/avatar', locals: { user: @photo_post.author } %>
+        <div class="header-content">
+          <p><strong><%= @photo_post.author.full_name %></strong></p>
+          <p><small><%= time_ago_in_words(@photo_post.created_at) %> ago</small></p>
+        </div>
+      </div>
+      <%= render partial: 'likes/like', locals: { likeable: @photo_post } %>
     </div>
+    <div class="photo-content">
+      <div class="photo-form">
+        <%= form_with model: @photo_post do |f| %>
 
-    <%= button_tag :submit do %>
-      <span class="material-icons">add</span>
-      <span class="material-icons">image</span>
-    <% end %>
-  <% end %>
-</div>
+          <div class="form-fields">
+            <%= f.file_field :image %>
+            <%= f.text_area :description, cols: 120, rows: 2, placeholder: "Describe your photo" %>
+          </div>
+
+          <%= button_tag :submit do %>
+            <span class="material-icons">add</span>
+            <span class="material-icons">image</span>
+          <% end %>
+        <% end %>
+         <%= link_to "Cancel", @photo_post %>
+      </div>
+    </div>
+    <p class="photo-description"><%= @photo_post.description %></p>
+    <div class="photo-actions">
+      <%# NEED TO ADJUST CURRENT_USER FUNCTIONALITY %>
+      <%#= render partial: 'likes/form', locals: { likeable: photo_post, like: photo_post.find_like_by_user(current_user) } %>
+      <%= turbo_stream_from @photo_post, :comments %>
+      <%= tag.div id: "#{dom_id(@photo_post)}_comments" do %>
+        <%= render @photo_post.comments %>
+      <% end %>
+      <%= render partial: 'comments/form', locals: { commentable: @photo_post, comment: Comment.new } %>
+    </div>
+  </div>
+<% end %>

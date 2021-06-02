@@ -13,6 +13,7 @@
 #  author_id   :bigint
 #
 class PhotoPost < ApplicationRecord
+  include ActionView::RecordIdentifier
   include HasLikes
 
   belongs_to :author, class_name: "User"
@@ -20,4 +21,7 @@ class PhotoPost < ApplicationRecord
   has_many :likes, as: :likeable, dependent: :destroy
   has_one_attached :image
   has_one :post, as: :postable, dependent: :destroy
+
+  after_update_commit { broadcast_replace_to self, target: dom_id(self).to_s }
+  after_destroy_commit { broadcast_remove_to self }
 end

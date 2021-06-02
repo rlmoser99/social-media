@@ -15,13 +15,16 @@
     </div>
   </div>
 
-  <% @feed&.each do |item| %>
+<% @feed&.each do |item| %>
+  <%= turbo_stream_from item.postable %>
+  <%= turbo_frame_tag item.postable do %>
     <% if item.photo_post? %>
       <%= render partial: 'photo_posts/photo_post', locals: { photo_post: item.postable } %>
     <% elsif item.text_post?%>
       <%= render partial: 'text_posts/text_post', locals: { text_post: item.postable } %>
     <% end %>
   <% end %>
+<% end %>
 
   <%= paginate @feed %>
 </div>

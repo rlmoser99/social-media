@@ -1,1 +1,3 @@
-<%= render partial: 'photo_posts/photo_post', locals: { photo_post: @photo_post } %>
+<%= turbo_frame_tag dom_id(@photo_post) do %>
+  <%= render partial: 'photo_posts/photo_post', locals: { photo_post: @photo_post } %>
+<% end %>
