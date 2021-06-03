@@ -12,7 +12,7 @@ RSpec.describe "notification for comment", type: :system do
   let!(:inverse_friendship) { create(:friendship, user: friend, friend: user) }
   let!(:post) { create(:text_post, author: user, content: "best movie ever!") }
 
-  xit "successfully shows count, notification, and resets" do
+  it "successfully shows count, notification, and resets" do
     sign_in(friend)
     visit(newsfeed_path)
     within(".like-form") do

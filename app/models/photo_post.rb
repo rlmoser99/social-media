@@ -14,7 +14,6 @@
 #
 class PhotoPost < ApplicationRecord
   include ActionView::RecordIdentifier
-  include HasLikes
 
   belongs_to :author, class_name: "User"
   has_many :comments, as: :commentable, dependent: :destroy

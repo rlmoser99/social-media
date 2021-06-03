@@ -22,8 +22,7 @@
       <p><%= text_post.content %></p>
     </div>
     <div class="post-responses">
-      <%# NEED TO ADJUST CURRENT_USER FUNCTIONALITY %>
-      <%#= render partial: 'likes/form', locals: { likeable: text_post, like: text_post.find_like_by_user(current_user) } %>
+      <%= render partial: 'likes/form', locals: { likeable: text_post } %>
       <%= turbo_stream_from text_post, :comments %>
       <%= tag.div id: "#{dom_id(text_post)}_comments" do %>
         <%= render text_post.comments %>

@@ -8,30 +8,26 @@ class LikesController < ApplicationController
   end
 
   def create
-    @like = @likeable.likes.new(like_params)
+    @like = @likeable.likes.new
     @like.author = current_user
-    if @like.save
-      NotificationCreator.new(@like, @like.likeable.author).call unless authored_like?
-      flash[:notice] = "Your like has been saved."
-    end
+    NotificationCreator.new(@like, @like.likeable.author).call if @like.save && !authored_likeable?
     redirect_back fallback_location: newsfeed_path
   end
 
   def destroy
-    @like = Like.find_by(like_params)
+    @like = Like.find_by(likeable_id: params[:likeable_id], likeable_type: params[:likeable_type], author: current_user)
     @like.destroy
     NotificationDestroyer.new(@like, @like.likeable.author).call
-    flash[:notice] = "Your like has been removed."
     redirect_back fallback_location: newsfeed_path
   end
 
   private
 
     def like_params
-      params.permit(:id, :likeable_id, :user_id)
+      params.permit(:id, :likeable_id, :likeable_type, :text_post_id, :photo_post_id)
     end
 
-    def authored_like?
+    def authored_likeable?
       @likeable.author == current_user
     end
 end

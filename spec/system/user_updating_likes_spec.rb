@@ -12,7 +12,7 @@ RSpec.describe "user adding and removing likes ", type: :system do
   let!(:friend_user) { create(:friendship, user: friend, friend: user) }
   let!(:friend_post) { create(:text_post, author: friend, content: "Two by two. Hands of blue.") }
 
-  xit "correctly shows the like count and unread notifications changing" do
+  it "correctly shows the like count and unread notifications changing" do
     sign_in(user)
     visit(newsfeed_path)
 
@@ -31,7 +31,7 @@ RSpec.describe "user adding and removing likes ", type: :system do
     end
     expect(friend.reload.unread_notifications_count).to eq(1)
 
-    within '.like-form' do
+    within '.unlike-form' do
       find_submit_button.click
     end
 
