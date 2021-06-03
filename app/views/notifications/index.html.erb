@@ -18,4 +18,7 @@
       <%= render partial: 'photo_posts/summary', locals: { notification: notification } %>
     <% end %>
   <% end %>
+
+  <%= paginate @notifications %>
+
 </div>
