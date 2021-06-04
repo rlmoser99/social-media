@@ -6,15 +6,10 @@
 
     form {
       flex-direction: column;
-
-      button {
-        margin: 1rem 0 0 0;
-      }
     }
 
-    .form-fields {
+    .image-upload-field {
       display: flex;
-      flex-direction: column;
 
       * > { flex: 0 1 auto; }
 
@@ -39,6 +34,12 @@
         color: $color-primary-gray;
       }
     }
+
+    .form-fields {
+      display: flex;
+
+      * > { flex: 0 1 auto; }
+    }
   }
 
   &-container {
@@ -54,19 +55,5 @@
 
   &-description {
     padding: 1rem 0;
-  }
-}
-
-@media screen and (min-width: $phone) {
-  .photo {
-    &-form {
-      form {
-        flex-direction: row;
-
-        button {
-          margin: 0 0 0 1rem;
-        }
-      }
-    }
   }
 }

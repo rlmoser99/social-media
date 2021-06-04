@@ -3,7 +3,7 @@
 
   <%= form_with(model: model, id: dom_id_for_records(*model)) do |f| %>
 
-    <%= f.text_area :content, cols: 120, rows: 1, required: true, placeholder: "comment" %>
+    <%= f.text_area :content, cols: 120, rows: 1, required: true, placeholder: "Write a comment" %>
 
     <%= button_tag :submit do %>
       <span class="material-icons">add</span>

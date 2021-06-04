@@ -1,6 +1,6 @@
 <div class="post-form">
   <%= form_with scope: :text_post, url: text_posts_path do |f| %>
-    <%= f.text_area :content, cols: 120, rows: 2, placeholder: "What's on your mind?" %>
+    <%= f.text_area :content, cols: 120, rows: 1, placeholder: "What's on your mind?" %>
 
     <%= button_tag :submit do %>
       <span class="material-icons">add</span>

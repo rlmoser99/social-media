@@ -13,15 +13,18 @@
       <div class="photo-form">
         <%= form_with model: @photo_post do |f| %>
 
-          <div class="form-fields">
+          <div class="image-upload-field">
             <%= f.file_field :image %>
-            <%= f.text_area :description, cols: 120, rows: 2, placeholder: "Describe your photo" %>
           </div>
 
-          <%= button_tag :submit do %>
-            <span class="material-icons">add</span>
-            <span class="material-icons">image</span>
-          <% end %>
+          <div class="form-fields">
+            <%= f.text_area :description, cols: 120, rows: 1, placeholder: "Describe your photo" %>
+            <%= button_tag :submit do %>
+              <span class="material-icons">add</span>
+              <span class="material-icons">image</span>
+            <% end %>
+          </div>
+
         <% end %>
          <%= link_to "Cancel", @photo_post, class: "cancel-edit-mode" %>
       </div>

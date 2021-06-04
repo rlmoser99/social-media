@@ -3,6 +3,10 @@
 
   &-form {
     @include text-form($color-accent-blue);
+
+    form {
+      align-items: center;
+    }
   }
 
   &-container {
