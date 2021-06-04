@@ -12,14 +12,14 @@
     <div class="post-content">
         <div class="post-form">
         <%= form_with model: @text_post do |f| %>
-          <%= f.text_area :content, cols: 120, rows: 5 %>
+          <%= f.text_area :content, cols: 120, rows: 2 %>
 
           <%= button_tag :submit do %>
             <span class="material-icons">add</span>
             <span class="material-icons">chat_bubble</span>
           <% end %>
         <% end %>
-        <%= link_to "Cancel", @text_post %>
+        <%= link_to "Cancel", @text_post, class: "cancel-edit-mode" %>
       </div>
     </div>
     <div class="post-actions">

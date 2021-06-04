@@ -7,44 +7,58 @@
   &-container {
     background-color: $color-dark-gray;
     border-left: 3px solid $color-accent-green;
-    display: flex;
     margin: var(--spacing) 0;
-    padding: 1rem var(--spacing);
-
-    * > { flex: 0 1 auto; }
+    padding: 1rem;
   }
 
-  &-heading {
+  &-header {
+    align-items: center;
     display: flex;
 
     * > { flex: 0 1 auto; }
 
-    .author-info {
-      display: flex;
-      flex: 1 1 auto;
-      justify-content: space-between;
+    .avatar {
+      img {
+        border-color: $color-accent-green;
+        width: 50px;
+      }
 
-      strong {
-        color: $color-accent-green;
-        font-size: 1.1rem;
+      .material-icons {
+        border-color: $color-accent-green;
+        font-size: 48px;
       }
     }
 
-    .comment-author-actions {
-      padding-left: 1rem;
-
-      a {
-        color: $color-primary-gray;
-        text-decoration: none;
-
-        &:hover {
-          color: $color-accent-green;
-        }
-      }
+    p strong {
+      color: $color-accent-green;
+      font-size: 1.1rem;
+      margin-right: 1rem;
     }
   }
 
   &-content {
-    flex: 1 1 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+
+    * > { flex: 0 1 auto; }
+
+    .author-actions {
+      align-self: flex-end;
+      display: flex;
+      margin-left: .5rem;
+
+      * > {flex: 0 1 auto;}
+
+      a {
+        color: $color-accent-green;
+        height: 24px;
+        text-decoration: none;
+
+        &:hover {
+          color: $color-white;
+        }
+      }
+    }
   }
 }

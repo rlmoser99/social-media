@@ -43,6 +43,7 @@
 @mixin text-form($color) {
   form {
     display: flex;
+    margin: 1rem 0;
 
     * > { flex: 0 1 auto; }
 
@@ -62,6 +63,10 @@
       margin-left: var(--spacing);
       padding: calc(var(--spacing) / 2);
     }
+  }
+
+  .cancel-edit-mode {
+    color: $color-warning-red;
   }
 }
 

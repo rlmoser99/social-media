@@ -19,7 +19,7 @@ RSpec.describe "user modifies a comment", type: :system do
       expect(page).to have_content(comment.content)
     end
 
-    within '.comment-author-actions' do
+    within '.comment-container .author-actions' do
       page.click_link('', href: edit_comment_path(comment))
     end
 
@@ -32,7 +32,7 @@ RSpec.describe "user modifies a comment", type: :system do
   end
 
   it "successfully deletes" do
-    within '.comment-author-actions' do
+    within '.comment-container .author-actions' do
       page.click_link('', href: comment_path(comment))
     end
 

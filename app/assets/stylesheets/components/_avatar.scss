@@ -1,9 +1,12 @@
 .avatar {
+  display: flex;
+
+  * > { flex: 0 1 auto; }
+
   .material-icons,
   img {
-    border: 1px dashed $color-accent-green;
+    border: 1px dashed $color-accent-blue;
     border-radius: 50%;
-    display: block;
     margin-right: 1rem;
   }
 
