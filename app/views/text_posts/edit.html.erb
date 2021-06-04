@@ -8,7 +8,6 @@
           <p><small><%= time_ago_in_words(@text_post.created_at) %> ago</small></p>
         </div>
       </div>
-      <%= render partial: 'likes/like', locals: { likeable: @text_post } %>
     </div>
     <div class="post-content">
         <div class="post-form">
@@ -23,13 +22,17 @@
         <%= link_to "Cancel", @text_post %>
       </div>
     </div>
-    <div class="post-responses">
-      <%= render partial: 'likes/form', locals: { likeable: @text_post } %>
+    <div class="post-actions">
+      <div class="like-actions">
+        <%= render partial: 'likes/like', locals: { likeable: @text_post } %>
+        <%= render partial: 'likes/form', locals: { likeable: @text_post } %>
+      </div>
+    </div>
+    <div class="post-comments">
       <%= turbo_stream_from @text_post, :comments %>
       <%= tag.div id: "#{dom_id(@text_post)}_comments" do %>
         <%= render @text_post.comments %>
       <% end %>
-      <%= render partial: 'comments/form', locals: { commentable: @text_post, comment: Comment.new } %>
     </div>
   </div>
 <% end %>

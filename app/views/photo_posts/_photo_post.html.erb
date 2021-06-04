@@ -8,9 +8,16 @@
           <p><small><%= time_ago_in_words(photo_post.created_at) %> ago</small></p>
         </div>
       </div>
-      <%= render partial: 'likes/like', locals: { likeable: photo_post } %>
     </div>
     <div class="photo-content">
+      <%= cl_image_tag photo_post.image.key, class: 'photo-image' %>
+    </div>
+    <p class="photo-description"><%= photo_post.description %></p>
+    <div class="photo-actions">
+      <div class="like-actions">
+        <%= render partial: 'likes/like', locals: { likeable: photo_post } %>
+        <%= render partial: 'likes/form', locals: { likeable: photo_post } %>
+      </div>
       <div class="author-actions">
         <%= link_to edit_photo_post_path(photo_post), title: "Edit Post" do %>
           <span class="material-icons">edit</span>
@@ -19,11 +26,8 @@
           <span class="material-icons">delete</span>
         <% end %>
       </div>
-      <%= cl_image_tag photo_post.image.key, class: 'photo-image' %>
     </div>
-    <p class="photo-description"><%= photo_post.description %></p>
-    <div class="photo-actions">
-      <%= render partial: 'likes/form', locals: { likeable: photo_post } %>
+    <div class="photo-comments">
       <%= turbo_stream_from photo_post, :comments %>
       <%= tag.div id: "#{dom_id(photo_post)}_comments" do %>
         <%= render photo_post.comments %>

@@ -18,7 +18,7 @@ RSpec.describe "user adding and removing likes ", type: :system do
 
     expect(friend.unread_notifications_count).to eq(0)
     within '.like-count' do
-      expect(page).to have_no_css('span.material-icons')
+      expect(page).to have_content("0")
     end
 
     within '.like-form' do
@@ -27,7 +27,6 @@ RSpec.describe "user adding and removing likes ", type: :system do
 
     within '.like-count' do
       expect(page).to have_content("1")
-      expect(page).to have_css('span.material-icons')
     end
     expect(friend.reload.unread_notifications_count).to eq(1)
 
@@ -36,7 +35,7 @@ RSpec.describe "user adding and removing likes ", type: :system do
     end
 
     within '.like-count' do
-      expect(page).to have_no_css('span.material-icons')
+      expect(page).to have_content("0")
     end
     expect(friend.reload.unread_notifications_count).to eq(0)
   end

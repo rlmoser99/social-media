@@ -8,9 +8,15 @@
           <p><small><%= time_ago_in_words(text_post.created_at) %> ago</small></p>
         </div>
       </div>
-      <%= render partial: 'likes/like', locals: { likeable: text_post } %>
     </div>
     <div class="post-content">
+      <p><%= text_post.content %></p>
+    </div>
+    <div class="post-actions">
+      <div class="like-actions">
+        <%= render partial: 'likes/like', locals: { likeable: text_post } %>
+        <%= render partial: 'likes/form', locals: { likeable: text_post } %>
+      </div>
       <div class="author-actions">
         <%= link_to edit_text_post_path(text_post), title: "Edit Post" do %>
           <span class="material-icons">edit</span>
@@ -19,10 +25,8 @@
           <span class="material-icons">delete</span>
         <% end %>
       </div>
-      <p><%= text_post.content %></p>
     </div>
-    <div class="post-responses">
-      <%= render partial: 'likes/form', locals: { likeable: text_post } %>
+    <div class="post-comments">
       <%= turbo_stream_from text_post, :comments %>
       <%= tag.div id: "#{dom_id(text_post)}_comments" do %>
         <%= render text_post.comments %>

@@ -103,41 +103,54 @@
   padding: var(--spacing);
 }
 
-@mixin author-options {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 0;
+@mixin default-post-styles {
+  &-header {
+    .header-profile {
+      display: flex;
 
-  * > { flex: 0 1 auto; }
+      * > { flex: 0 1 auto; }
 
-  .author-actions {
-    align-self: flex-end;
+      .header-content {
+        strong {
+          color: $color-accent-blue;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  &-content {
+    margin: 1rem 0;
+  }
+
+  &-actions {
     display: flex;
-    margin-left: var(--spacing);
+    justify-content: space-between;
+    margin: 1rem 0;
 
     * > { flex: 0 1 auto; }
 
-    a {
-      color: $color-dark-gray;
-      text-decoration: none;
+    .author-actions {
+      align-self: flex-end;
+      display: flex;
 
-      &:hover {
-        color: $color-accent-green;
+      * > { flex: 0 1 auto; }
+
+      a {
+        color: $color-accent-blue;
+        padding: 0 .25rem;
+        text-decoration: none;
+
+        &:hover {
+          color: $color-white;
+        }
       }
     }
 
-    span {
-      margin-left: .5rem;
+    .like-actions {
+      display: flex;
+
+      * > { flex: 0 1 auto; }
     }
-  }
-}
-
-@mixin author-options-tablet {
-  flex-direction: row;
-  justify-content: space-between;
-
-  .author-actions {
-    order: 2;
-    align-self: flex-start;
   }
 }

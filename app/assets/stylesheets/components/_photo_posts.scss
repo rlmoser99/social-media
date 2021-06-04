@@ -1,4 +1,6 @@
 .photo {
+  @include default-post-styles;
+
   &-form {
     @include text-form($color-accent-blue);
 
@@ -50,17 +52,6 @@
     }
   }
 
-  &-header {
-    display: flex;
-    justify-content: space-between;
-
-    * > { flex: 0 1 auto; }
-  }
-
-  &-content {
-    @include author-options;
-  }
-
   &-description {
     padding: 1rem 0;
   }
@@ -76,16 +67,6 @@
           margin: 0 0 0 1rem;
         }
       }
-    }
-  }
-}
-
-@media screen and (min-width: $tablet) {
-  .photo {
-    &-content {
-      @include author-options-tablet;
-
-      margin-top: 1rem;
     }
   }
 }

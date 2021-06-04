@@ -1,4 +1,5 @@
 .post {
+  @include default-post-styles;
 
   &-form {
     @include text-form($color-accent-blue);
@@ -6,40 +7,5 @@
 
   &-container {
     @include container-outline;
-  }
-
-  &-header {
-    display: flex;
-    justify-content: space-between;
-
-    * > { flex: 0 1 auto; }
-  }
-
-  &-content {
-    @include author-options;
-  }
-}
-
-.header-profile {
-  display: flex;
-
-  @include avatar-blue-border;
-
-  * > { flex: 0 1 auto; }
-
-  .header-content {
-    strong {
-      color: $color-accent-blue;
-      font-size: 1.2rem;
-    }
-  }
-}
-
-@media screen and (min-width: $tablet) {
-  .post {
-    &-content {
-      @include author-options-tablet;
-
-    }
   }
 }

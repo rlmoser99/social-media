@@ -1,12 +1,10 @@
-<div class="unlike-form">
-  <%= button_to unlike_path, method: :delete, params: { likeable_id: likeable.id, likeable_type: likeable.class.to_s }, form_class: "form-button" do %>
-    <span class="material-icons">remove</span>
-    <span class="material-icons">thumb_up</span>
-  <% end %>
-</div>
 <div class="like-form">
   <%= button_to [ likeable, Like.new ], method: :post, form_class: "form-button" do %>
     <span class="material-icons">add</span>
-    <span class="material-icons">thumb_up</span>
+  <% end %>
+</div>
+<div class="unlike-form">
+  <%= button_to unlike_path, method: :delete, params: { likeable_id: likeable.id, likeable_type: likeable.class.to_s }, form_class: "form-button" do %>
+    <span class="material-icons">remove</span>
   <% end %>
 </div>

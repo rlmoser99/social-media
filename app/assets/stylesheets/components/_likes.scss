@@ -1,26 +1,39 @@
 .like-count {
   align-items: center;
-  color: $color-accent-blue;
+  background-color: $color-accent-blue;
+  border: 2px solid $color-accent-blue;
+  border-radius: $border-radius;
+  color: $color-primary-gray;
   display: flex;
+  margin-right: 5px;
 
-  * > { flex: 0 1 auto; }
+  p {
+    color: $color-primary-gray;
+    padding: 5px 7px 5px 5px;
+  }
 
   span {
-    background-color: $color-dark-gray;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    margin-left: .5rem;
-    padding: 8px;
+    background-color: $color-primary-gray;
+    border-radius: 0 $border-radius $border-radius 0;
+    color: $color-accent-blue;
+    padding: 5px;
   }
 }
 
 // Button to add a new like to post
+.unlike-form,
 .like-form {
+  align-items: center;
+  display: flex;
+
   button {
-    background-color: $color-accent-green;
+    background-color: $color-primary-gray;
     border: none;
     border-radius: $border-radius;
-    color: $color-primary-gray;
-    padding: .5rem;
+    color: $color-accent-blue;
+  }
+
+  button:hover {
+    color: $color-white;
   }
 }
