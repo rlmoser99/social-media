@@ -16,7 +16,14 @@
 
   .friend-container {
     @include user-container;
+    flex-direction: row;
+    flex-wrap: wrap;
     max-width: 500px;
+    padding: 1rem;
+
+    .btn-group {
+      width: 100%;
+    }
   }
 
   .friend-profile {
@@ -25,4 +32,17 @@
 
   @include button-group;
   @include button-form;
+}
+
+@media screen and (min-width: $tablet) {
+  .notification-summary {
+    .friend-container {
+      justify-content: space-between;
+      max-width: none;
+
+      .btn-group {
+        width: 50%;
+      }
+    }
+  }
 }
