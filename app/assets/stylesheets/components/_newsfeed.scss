@@ -17,6 +17,7 @@
       border: $border-container;
       border-bottom: none;
       border-radius: 10px 10px 0 0;
+      cursor: pointer;
       margin-right: 5px;;
     }
 
@@ -35,6 +36,10 @@
       display: none;
       order: 2;
       padding: var(--spacing);
+
+      form {
+        margin: 0;
+      }
     }
   }
 }
