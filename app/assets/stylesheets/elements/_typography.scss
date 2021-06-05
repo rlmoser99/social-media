@@ -6,8 +6,13 @@ a {
   }
 }
 
-h2, h3 {
+h2 {
   color: $color-accent-blue;
+  margin: 1rem 0;
+}
+
+h3 {
+  color: $color-white;
   margin: 1rem 0;
 }
 

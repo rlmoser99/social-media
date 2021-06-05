@@ -1,23 +1,33 @@
-.user-container {
-  padding: var(--spacing) 0;
+.user-header {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
   * > { flex: 0 1 auto; }
 
-  .account-info {
+  h2 {
+    margin-right: 2rem;
+  }
+}
 
+.user-container {
+  .user-info {
     form {
-      display: flex;
-      flex-direction: column;
-      margin-top: 1rem;
-      max-width: 450px;
-
       @include container-outline;
 
-      * > { flex: 0 1 auto; }
-    }
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
 
-    label {
-      color: $color-white;
+      * > { flex: 0 1 auto; }
+
+      .avatar-file-upload {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 1rem 0;
+      }
     }
 
     input {
@@ -41,39 +51,12 @@
       border: none;
       border-radius: $border-radius;
       color: $color-primary-gray;
-      margin-top: 1rem;
       padding: calc(var(--spacing) / 2);
     }
 
     input[type=file]:hover::file-selector-button {
       background-color: $color-accent-blue;
       color: $color-primary-gray;
-    }
-  }
-
-  .account-header {
-    align-items: center;
-    display: flex;
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-
-    @include avatar-blue-border;
-
-    * > { flex: 0 1 auto;}
-  }
-
-  a {
-    color: $color-accent-blue;
-  }
-}
-
-@media screen and (min-width: $phone) {
-	.user-container > .account-info > form {
-    flex-direction: row;
-    justify-content: space-between;
-
-    input[type="submit"] {
-      margin-top: 0;
     }
   }
 }

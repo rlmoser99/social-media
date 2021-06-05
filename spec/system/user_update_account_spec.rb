@@ -11,13 +11,13 @@ RSpec.describe "user sign up", type: :system do
     it 'changes account information successfully' do
       sign_in(user)
       visit(user_path(user))
-      click_on("Edit Account")
+      click_on("Update Account")
 
       expect(page).to have_current_path(edit_user_registration_path)
 
-      new_email = "jubal@early.com"
+      new_last_name = "Smith"
       within '#edit_user' do
-        fill_in("user[email]", with: new_email)
+        fill_in("user[last_name]", with: new_last_name)
         fill_in("user[current_password]", with: user.password)
         find_submit_btn.click
       end
@@ -26,7 +26,7 @@ RSpec.describe "user sign up", type: :system do
 
       visit(user_path(user))
 
-      expect(page).to have_content(new_email)
+      expect(page).to have_content(new_last_name)
     end
   end
 
@@ -34,7 +34,7 @@ RSpec.describe "user sign up", type: :system do
     it 'does not changes account information' do
       sign_in(user)
       visit(user_path(user))
-      click_on("Edit Account")
+      click_on("Update Account")
 
       expect(page).to have_current_path(edit_user_registration_path)
 
