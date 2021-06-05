@@ -66,6 +66,10 @@
       padding: .5rem;
 
       * > { flex: 0 1 auto; }
+
+      &:hover {
+        color: $color-white;
+      }
     }
   }
 
@@ -147,11 +151,11 @@
 
       a {
         color: $color-accent-blue;
-        padding: 0 .25rem;
+        padding-left: .5rem;
         text-decoration: none;
 
         &:hover {
-          color: $color-white;
+          color: $color-light-gray;
         }
       }
     }

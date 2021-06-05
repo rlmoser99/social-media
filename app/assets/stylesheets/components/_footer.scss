@@ -18,8 +18,12 @@ footer {
     * > { flex: 0 1 auto; }
 
     // github icon
-    img {
+    a img {
       opacity: .8;
+    }
+
+    a:hover img {
+      opacity: .5;
     }
   }
 }

@@ -53,10 +53,11 @@
       a {
         color: $color-accent-green;
         height: 24px;
+        padding-left: .5rem;
         text-decoration: none;
 
         &:hover {
-          color: $color-white;
+          color: $color-light-gray;
         }
       }
     }
