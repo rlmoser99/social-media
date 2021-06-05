@@ -52,7 +52,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy if authored_comment?
+    return unless authored_comment?
+
+    NotificationDestroyer.new(@comment, @comment.commentable.author).call
+    @comment.destroy
     respond_to do |format|
       format.turbo_stream {}
       format.html { redirect_to @comment.commentable }

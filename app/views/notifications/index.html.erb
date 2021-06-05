@@ -8,13 +8,9 @@
                   locals: { request: notification.notifiable,
                             inverse_friend: notification.notifiable.user,
                             friendship_request_statuses: @friendship_request_statuses } %>
-    <% elsif notification.comment? && notification.notifiable&.text_post? %>
+    <% elsif notification.notifiable&.text_post? %>
       <%= render partial: 'text_posts/summary', locals: { notification: notification } %>
-    <% elsif notification.comment? && notification.notifiable&.photo_post? %>
-      <%= render partial: 'photo_posts/summary', locals: { notification: notification } %>
-    <% elsif notification.like? &&  notification.notifiable&.text_post? %>
-      <%= render partial: 'text_posts/summary', locals: { notification: notification } %>
-    <% elsif notification.like? &&  notification.notifiable&.photo_post? %>
+    <% elsif notification.notifiable&.photo_post? %>
       <%= render partial: 'photo_posts/summary', locals: { notification: notification } %>
     <% end %>
   <% end %>

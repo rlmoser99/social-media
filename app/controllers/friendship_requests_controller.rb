@@ -28,6 +28,7 @@ class FriendshipRequestsController < ApplicationController
   end
 
   def destroy
+    NotificationDestroyer.new(@friendship_request, @friendship_request.requested_friend).call
     @friendship_request.destroy
     flash[:notice] = "Your friendship request has been deleted."
     redirect_back fallback_location: users_path
