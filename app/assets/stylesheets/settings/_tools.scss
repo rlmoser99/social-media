@@ -167,3 +167,17 @@
     }
   }
 }
+
+@mixin devise-button-styles {
+  background-color: $color-primary-gray;
+  border: 2px solid $color-accent-green;
+  border-radius: $border-radius;
+  color: $color-accent-green;
+  margin-bottom: 1rem;
+  padding: .5rem 1rem;
+
+  &:hover {
+    background-color: $color-accent-green;
+    color: $color-primary-gray;
+  }
+}

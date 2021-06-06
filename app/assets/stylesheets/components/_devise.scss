@@ -1,6 +1,10 @@
 .registration-form {
   margin: 0 auto;
   max-width: 300px;
+
+  form.button_to input {
+    @include devise-button-styles;
+  }
 }
 
 .field {
@@ -17,13 +21,8 @@
   }
 }
 
-// Should this be in a simple-button mixin?
 .actions > input {
-  background-color: $color-accent-green;
-  border: none;
-  border-radius: $border-radius;
-  color: $color-primary-gray;
-  padding: calc(var(--spacing) / 2);
+  @include devise-button-styles;
 }
 
 .registration-tip {
