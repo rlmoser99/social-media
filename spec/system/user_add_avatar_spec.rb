@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe "user can update their avatar", type: :system do
+  include CustomMatchers
+
   let!(:user) { create(:user) }
 
   it "updates default material-icon to avatar img" do
@@ -15,7 +17,7 @@ RSpec.describe "user can update their avatar", type: :system do
     end
 
     page.attach_file('user[avatar]', Rails.root.join('spec/support/assets/avatar.png'))
-    click_button "Update Avatar"
+    find_submit_button.click
 
     within '.avatar' do
       expect(page).to have_selector('img')

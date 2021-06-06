@@ -2,6 +2,10 @@
 
   &-form {
     @include text-form($color-accent-green);
+
+    button {
+      @include solid-button($color-accent-green);
+    }
   }
 
   &-container {

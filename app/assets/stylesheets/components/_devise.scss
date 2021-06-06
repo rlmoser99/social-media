@@ -3,7 +3,7 @@
   max-width: 300px;
 
   form.button_to input {
-    @include devise-button-styles;
+    @include outline-button($color-accent-green);
   }
 }
 
@@ -22,7 +22,7 @@
 }
 
 .actions > input {
-  @include devise-button-styles;
+  @include outline-button($color-accent-green);
 }
 
 .registration-tip {

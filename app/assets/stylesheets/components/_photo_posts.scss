@@ -6,6 +6,14 @@
 
     form {
       flex-direction: column;
+
+      textarea {
+        margin-left: 5px;
+      }
+
+      button {
+        @include solid-button($color-accent-blue);
+      }
     }
 
     .image-upload-field {
@@ -16,22 +24,13 @@
       input {
         color: $color-accent-blue;
         cursor: pointer;
-        padding: 0;
+        padding: 5px;
       }
 
       input[type=file]::file-selector-button {
-        background-color: $color-dark-gray;
-        border: 2px solid $color-accent-blue;
-        border-radius: $border-radius;
-        color: $color-accent-blue;
-        cursor: pointer;
-        margin-bottom: 1rem;
-        padding: calc(var(--spacing) / 4);
-      }
+        @include outline-button($color-accent-blue);
 
-      input[type=file]:hover::file-selector-button {
-        background-color: $color-accent-blue;
-        color: $color-primary-gray;
+        cursor: pointer;
       }
     }
 

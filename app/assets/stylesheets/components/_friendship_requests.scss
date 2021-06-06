@@ -1,4 +1,6 @@
 .friend {
+  @include button-group;
+
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -12,8 +14,11 @@
     @include user-profile;
   }
 
-  @include button-group;
-  @include button-form;
+  form > input {
+    @include outline-button($color-accent-green);
+    margin-top: 1rem;
+    width: 100%;
+  }
 }
 
 @media screen and (min-width: $phone) {

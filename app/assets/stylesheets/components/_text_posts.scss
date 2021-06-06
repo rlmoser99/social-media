@@ -6,6 +6,10 @@
 
     form {
       align-items: center;
+
+      button {
+        @include solid-button($color-accent-blue);
+      }
     }
   }
 

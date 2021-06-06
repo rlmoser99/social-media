@@ -14,7 +14,11 @@
         <%= f.file_field :avatar, required: true %>
       </div>
 
-        <%= f.submit "Update Avatar" %>
+      <%= button_tag :submit do %>
+        <span class="material-icons">add</span>
+        <span class="material-icons">image</span>
+      <% end %>
+
     <% end %>
   </div>
 
