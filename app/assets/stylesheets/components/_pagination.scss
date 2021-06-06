@@ -1,8 +1,15 @@
 .pagination {
-  display: flex;
+  border: 3px solid $color-dark-gray;
+  border-radius: $border-radius;
   color: $color-accent-blue;
+  display: inline-flex;
+  width: auto;
 
   * > { flex: 0 1 auto; }
+
+  a:hover {
+    color: $color-white;
+  }
 
   .first, .last, .next, .prev {
     display: inline-flex;
@@ -21,5 +28,13 @@
   .page {
     line-height: 30px;
     padding: 0 .5rem;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .current {
+    background-color: $color-dark-gray;
   }
 }
