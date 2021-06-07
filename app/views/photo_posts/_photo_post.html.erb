@@ -30,7 +30,7 @@
     <div class="photo-comments">
       <%= turbo_stream_from photo_post, :comments %>
       <%= tag.div id: "#{dom_id(photo_post)}_comments" do %>
-        <%= render photo_post.comments %>
+        <%= render photo_post.comments.order(created_at: :asc) %>
       <% end %>
       <%= render partial: 'comments/form', locals: { commentable: photo_post, comment: Comment.new } %>
     </div>

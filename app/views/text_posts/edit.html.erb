@@ -35,7 +35,7 @@
     <div class="post-comments">
       <%= turbo_stream_from @text_post, :comments %>
       <%= tag.div id: "#{dom_id(@text_post)}_comments" do %>
-        <%= render @text_post.comments %>
+        <%= render @text_post.comments.order(created_at: :asc) %>
       <% end %>
     </div>
   </div>
