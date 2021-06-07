@@ -2,6 +2,7 @@ footer {
 
   .footer-artwork {
     background: url(asset_path("network-bottom-artwork.png")) top center / cover;
+    background-repeat: no-repeat;
     height: calc(var(--accent-art-height) * 1.5);
     margin: 0 auto;
     max-width: var(--accent-art-width);

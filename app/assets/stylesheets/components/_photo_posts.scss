@@ -33,12 +33,6 @@
         cursor: pointer;
       }
     }
-
-    .form-fields {
-      display: flex;
-
-      * > { flex: 0 1 auto; }
-    }
   }
 
   &-container {

@@ -17,6 +17,7 @@ nav > ul {
 
 .nav-artwork {
   background: url(asset_path("network-top-artwork.png")) bottom center / cover;
+  background-repeat: no-repeat;
   height: var(--accent-art-height);
   margin: 0 auto;
   max-width: var(--accent-art-width);

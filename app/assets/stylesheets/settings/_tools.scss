@@ -59,10 +59,7 @@
 
 @mixin text-form($color) {
   form {
-    display: flex;
     margin: 1rem 0;
-
-    * > { flex: 0 1 auto; }
 
     textarea {
       border: 3px solid $color;
@@ -70,6 +67,13 @@
       box-sizing: border-box;
       padding: .5rem;
       width: 100%;
+    }
+
+    .form-fields {
+      align-items: center;
+      display: flex;
+
+      * > { flex: 0 1 auto; }
     }
   }
 

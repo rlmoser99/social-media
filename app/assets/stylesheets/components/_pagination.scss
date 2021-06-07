@@ -1,14 +1,13 @@
 .pagination {
   border: 3px solid $color-dark-gray;
   border-radius: $border-radius;
-  color: $color-accent-blue;
   display: inline-flex;
   width: auto;
 
   * > { flex: 0 1 auto; }
 
   a:hover {
-    color: $color-white;
+    color: $color-accent-blue;
   }
 
   .first, .last, .next, .prev {

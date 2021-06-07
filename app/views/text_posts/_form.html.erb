@@ -1,10 +1,14 @@
 <div class="post-form">
   <%= form_with scope: :text_post, url: text_posts_path do |f| %>
-    <%= f.text_area :content, cols: 200, rows: 1, placeholder: "What's on your mind?" %>
 
-    <%= button_tag :submit do %>
-      <span class="material-icons">add</span>
-      <span class="material-icons">chat_bubble</span>
-    <% end %>
+    <div class="form-fields">
+      <%= f.text_area :content, cols: 200, rows: 1, placeholder: "What's on your mind?" %>
+
+      <%= button_tag :submit do %>
+        <span class="material-icons">add</span>
+        <span class="material-icons">chat_bubble</span>
+      <% end %>
+    </div>
+
   <% end %>
 </div>
