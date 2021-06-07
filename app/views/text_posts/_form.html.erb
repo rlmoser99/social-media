@@ -2,7 +2,7 @@
   <%= form_with scope: :text_post, url: text_posts_path do |f| %>
 
     <div class="form-fields">
-      <%= f.text_area :content, cols: 200, rows: 1, placeholder: "What's on your mind?" %>
+      <%= f.text_area :content, cols: 200, rows: 1, placeholder: "What's on your mind?", required: true %>
 
       <%= button_tag :submit do %>
         <span class="material-icons">add</span>

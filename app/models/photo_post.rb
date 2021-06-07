@@ -21,6 +21,8 @@ class PhotoPost < ApplicationRecord
   has_one_attached :image
   has_one :post, as: :postable, dependent: :destroy
 
+  validates :image, presence: true
+
   after_update_commit { broadcast_replace_to self, target: dom_id(self).to_s }
   after_destroy_commit { broadcast_remove_to self }
 end

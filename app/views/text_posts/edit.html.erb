@@ -14,7 +14,7 @@
         <%= form_with model: @text_post do |f| %>
 
           <div class="form-fields">
-            <%= f.text_area :content, cols: 200, rows: 1 %>
+            <%= f.text_area :content, cols: 200, rows: 1, required: true %>
 
             <%= button_tag :submit do %>
               <span class="material-icons">add</span>

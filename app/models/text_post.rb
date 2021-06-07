@@ -19,6 +19,8 @@ class TextPost < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_one :post, as: :postable, dependent: :destroy
 
+  validates :content, presence: true
+
   after_update_commit { broadcast_replace_to self, target: dom_id(self).to_s }
   after_destroy_commit { broadcast_remove_to self }
 end
