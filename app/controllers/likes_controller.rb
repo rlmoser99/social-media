@@ -16,8 +16,8 @@ class LikesController < ApplicationController
 
   def destroy
     @like = Like.find_by(likeable_id: params[:likeable_id], likeable_type: params[:likeable_type], author: current_user)
-    @like.destroy
     NotificationDestroyer.new(@like, @like.likeable.author).call
+    @like.destroy
     redirect_back fallback_location: newsfeed_path
   end
 

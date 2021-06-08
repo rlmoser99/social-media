@@ -54,7 +54,7 @@ namespace :db do
       next if user.avatar.attached?
 
       filename = "#{user.first_name}.jpeg"
-      user.avatar.attach(io: File.open("app/assets/images/seed_avatars/#{filename}"), filename: filename.to_s, content_type: 'image/jpeg')
+      user.avatar.attach(io: File.open("app/assets/images/sample_data/#{filename}"), filename: filename.to_s, content_type: 'image/jpeg')
     end
 
     users.repeated_combination(2).to_a.each do |pair|
@@ -162,13 +162,17 @@ namespace :db do
     Post.find_or_create_by(postable: remember, author: remember.author)
     Like.find_or_create_by(author: simon, likeable: remember)
 
-    hat = TextPost.find_or_create_by(author: jayne, content: "How's the hat sit? Pretty cunning, don't you think?")
-    Post.find_or_create_by(postable: hat, author: hat.author)
-    Comment.find_or_create_by(author: kaylee, commentable: hat, content: "I think it's the sweetest hat ever.")
-    Comment.find_or_create_by(author: wash, commentable: hat, content: "A man walks down the street in that hat, people know he's not afraid of anything.")
-    Comment.find_or_create_by(author: jayne, commentable: hat, content: "Damn straight.")
-    Like.find_or_create_by(author: kaylee, likeable: hat)
-    Like.find_or_create_by(author: wash, likeable: hat)
+    jayne_hat = PhotoPost.find_or_initialize_by(author: jayne, description: "How's it sit? Pretty cunning, don't you think?")
+    unless jayne_hat.image.attached?
+      jayne_hat.image.attach(io: File.open("app/assets/images/sample_data/hat.jpeg"), filename: "hat", content_type: 'image/jpeg')
+    end
+    jayne_hat.save
+    Post.find_or_create_by(postable: jayne_hat, author: jayne_hat.author)
+    Comment.find_or_create_by(author: kaylee, commentable: jayne_hat, content: "I think it's the sweetest hat ever.")
+    Comment.find_or_create_by(author: wash, commentable: jayne_hat, content: "A man walks down the street in that hat, people know he's not afraid of anything.")
+    Comment.find_or_create_by(author: jayne, commentable: jayne_hat, content: "Damn straight.")
+    Like.find_or_create_by(author: kaylee, likeable: jayne_hat)
+    Like.find_or_create_by(author: wash, likeable: jayne_hat)
 
     spices = TextPost.find_or_create_by(author: book, content: "The important thing is the spices. A man can live on packaged food from here ’til Judgment Day if he’s got enough rosemary.")
     Post.find_or_create_by(postable: spices, author: spices.author)
@@ -189,6 +193,23 @@ namespace :db do
     Post.find_or_create_by(postable: cows, author: cows.author)
     Comment.find_or_create_by(author: mal, commentable: cows, content: "Is it bad that what she said made perfect sense to me?")
     Like.find_or_create_by(author: mal, likeable: cows)
+
+    umbrella = PhotoPost.find_or_initialize_by(author: kaylee, description: "You're going to come with us.")
+    unless umbrella.image.attached?
+      umbrella.image.attach(io: File.open("app/assets/images/sample_data/umbrella.jpeg"), filename: "umbrella", content_type: 'image/jpeg')
+    end
+    umbrella.save
+    Post.find_or_create_by(postable: umbrella, author: umbrella.author)
+    Comment.find_or_create_by(author: book, commentable: umbrella, content: "Excuse me?")
+    Comment.find_or_create_by(author: kaylee, commentable: umbrella, content: "You like ships. You don't seem to be looking at the destinations. Whatcha care about is the ships and mines the nicest.")
+    Comment.find_or_create_by(author: book, commentable: umbrella, content: "Don't look like much.")
+    Comment.find_or_create_by(author: kaylee, commentable: umbrella, content: "Ah, she'll fool ya. You ever sail in a Firefly?")
+    Comment.find_or_create_by(author: book, commentable: umbrella, content: "Long before you were crawling. Not an ought three though. Didn't have the extenders. Tended to shake.")
+    Comment.find_or_create_by(author: kaylee, commentable: umbrella, content: "So, ah, how come you don't care where you're going?")
+    Comment.find_or_create_by(author: book, commentable: umbrella, content: "'Cause how you get there is the worthier part.")
+    Like.find_or_create_by(author: simon, likeable: umbrella)
+    Like.find_or_create_by(author: river, likeable: umbrella)
+    Like.find_or_create_by(author: book, likeable: umbrella)
 
     flying = TextPost.find_or_create_by(author: wash, content: "Oh my god. What can it be? We're all doomed! Who's flying this thing!? ... Oh right, that would be me. Back to work.")
     Post.find_or_create_by(postable: flying, author: flying.author)
@@ -218,5 +239,20 @@ namespace :db do
     Like.find_or_create_by(author: jayne, likeable: kill)
     Like.find_or_create_by(author: book, likeable: kill)
     Like.find_or_create_by(author: simon, likeable: kill)
+
+    crew = PhotoPost.find_or_initialize_by(author: mal, description: "We've done the impossible, and that makes us mighty.")
+    unless crew.image.attached?
+      crew.image.attach(io: File.open("app/assets/images/sample_data/crew.jpeg"), filename: "crew", content_type: 'image/jpeg')
+    end
+    crew.save
+    Post.find_or_create_by(postable: crew, author: crew.author)
+    Like.find_or_create_by(author: wash, likeable: crew)
+    Like.find_or_create_by(author: zoe, likeable: crew)
+    Like.find_or_create_by(author: river, likeable: crew)
+    Like.find_or_create_by(author: simon, likeable: crew)
+    Like.find_or_create_by(author: kaylee, likeable: crew)
+    Like.find_or_create_by(author: inara, likeable: crew)
+    Like.find_or_create_by(author: book, likeable: crew)
+    Like.find_or_create_by(author: jayne, likeable: crew)
   end
 end
