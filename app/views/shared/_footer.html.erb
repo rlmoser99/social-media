@@ -1,10 +1,16 @@
 <footer>
   <div class="footer-artwork">
   </div>
-  <ul>
-    <li>Created by <%= link_to "rlmoser", "https://rlmoser.com/", title: "Portfolio" %></li>
-    <li><%= link_to "https://github.com/rlmoser99", title: "GitHub" do %>
-      <%= image_tag('github-dark.png', height: '24px', width: '24px') %>
-    <% end %></li>
-  </ul>
+  <div class="footer-container">
+    <ul>
+      <li>Demo database resets daily</li>
+      <li>Artwork credit: <%= link_to "hiclipart", "https://www.hiclipart.com/free-transparent-background-png-clipart-plszh", title: "hiclipart" %></li>
+    </ul>
+    <ul>
+      <li><%= link_to "https://github.com/rlmoser99", title: "GitHub", class: "footer-icon" do %>
+        <%= image_tag('github-dark.png', height: '24px', width: '24px') %>
+      <% end %></li>
+      <li><%= link_to "rlmoser", "https://rlmoser.com/", title: "Portfolio" %></li>
+    </ul>
+  </div>
 </footer>

@@ -8,7 +8,7 @@ footer {
     max-width: var(--accent-art-width);
   }
 
-  ul {
+  .footer-container {
     align-items: center;
     background-color: $color-accent-green;
     color: $color-primary-gray;
@@ -18,13 +18,26 @@ footer {
 
     * > { flex: 0 1 auto; }
 
-    // github icon
-    a img {
-      opacity: .8;
-    }
+    ul {
+      li {
+        height: 24px;
+      }
 
-    a:hover img {
-      opacity: .5;
+      a {
+        color: $color-primary-gray;
+      }
+
+      // github icon
+      a.footer-icon {
+        display: flex;
+        justify-content: flex-end;
+
+        * > { flex: 0 1 auto; }
+
+        img {
+          opacity: .8;
+        }
+      }
     }
   }
 }
