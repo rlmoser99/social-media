@@ -55,16 +55,48 @@ Since anyone can sign in as a sample user to create reciprocal friendships, I am
 Even though this project specifically states to not worry about using JavaScript, I really wanted to see a comment or like appear without having to refresh the entire page. I've seen a lot of discussion about Hotwire lately, so I decided to give it a try! It doesn't work out-of-the-box with Devise and OmniAuth, so I had to use this [GoRail's video](https://gorails.com/episodes/devise-hotwire-turbo) and [article](https://dev.to/rbazinet/hotwire-fix-for-cors-error-when-using-omniauth-3k36) to get it working correctly. In addition, I had to remove Devise's `current_user` from my views, because Hotwire requires partials to be free of global references. 
 
 ## Local Installation
-- Prerequisites: Rails, Git, and Bundler
+- **Prerequisites:** Rails, Git, and Bundler
 - Clone this repo ([instructions](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository))
-- Navigate into this project's directory `cd social_media`
-- Install the required gems, by running `bundle install`
-- Migrate the database, by running `rails db:migrate`
-- Populate the database with sample data, by running `rails db:populate_sample_data` 
-- Start the local server, by running `rails server`
-- View `localhost:3000` in a web browser
+
+Navigate into this project's directory 
+```
+cd social_media
+```
+
+Install the required gems
+```
+bundle install
+```
+
+Migrate the database
+```
+rails db:migrate
+```
+
+Populate the database with sample data
+```
+rails db:seed
+``` 
+
+Start the local server
+```
+rails server
+```
+
+Finally, view the project by visiting `localhost:3000` in a web browser. **Please note:** Your local app will have limited functionality. You will not be able to add images or sign in with Facebook without your own API keys. Please see the live demo on heroku to see these working features.
 
 ### Running the tests
-- To run the entire test suite, run `rspec`
-- You can specify one spec folder to run a group tests, such as `rspec spec/system` 
-- You can specify one spec file to run a single set of tests, such as `rspec spec/services/friendship_manager_spec.rb` 
+To run the entire test suite
+```
+rspec
+```
+
+You can specify one spec folder to run a group tests, such as 
+```
+rspec spec/system
+``` 
+
+You can specify one spec file to run a single set of tests, such as
+```
+rspec spec/services/friendship_manager_spec.rb
+```
