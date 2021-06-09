@@ -57,46 +57,25 @@ Even though this project specifically states to not worry about using JavaScript
 ## Local Installation
 - **Prerequisites:** Rails, Git, and Bundler
 - Clone this repo ([instructions](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository))
-
-Navigate into this project's directory 
-```
-cd social_media
-```
-
-Install the required gems
-```
-bundle install
-```
-
-Migrate the database
-```
-rails db:migrate
-```
-
-Populate the database with sample data
-```
-rails db:seed
-``` 
-
-Start the local server
-```
-rails server
-```
-
-Finally, view the project by visiting `localhost:3000` in a web browser. **Please note:** Your local app will have limited functionality. You will not be able to add images or sign in with Facebook without your own API keys. Please see the live demo on heroku to see these working features.
+- Navigate into this project's directory `cd social_media`
+- Install the required gems, by running `bundle install`
+- This app uses [figaro](https://github.com/laserlemon/figaro) to manage secrets. You will need to create your own secrets for [cloudinary](https://cloudinary.com/documentation/rails_integration#configuration), [facebook](https://developers.facebook.com/docs/development#register), and [gmail](https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration-for-gmail).
+- Create and seed the database, by running `rails db:setup`
+- Start the local server, by running `rails server`
+- View by visiting `localhost:3000` in a web browser
 
 ### Running the tests
-To run the entire test suite
-```
-rspec
-```
+- To run the entire test suite
+  ```
+  rspec
+  ```
 
-You can specify one spec folder to run a group tests, such as 
-```
-rspec spec/system
-``` 
+- You can specify one spec folder to run a group tests, such as 
+  ```
+  rspec spec/system
+  ``` 
 
-You can specify one spec file to run a single set of tests, such as
-```
-rspec spec/services/friendship_manager_spec.rb
-```
+- You can specify one spec file to run a single set of tests, such as
+  ```
+  rspec spec/services/friendship_manager_spec.rb
+  ```
