@@ -4,6 +4,8 @@ This is the [final project](https://www.theodinproject.com/paths/full-stack-ruby
 
 ## Demo App
 
+You can view this [web app](https://rlm-social-media.herokuapp.com/users/sign_in) on Heroku. The heroku server will need a little bit of time to fire up a dyno, so please be patient with this free service.
+
 If you would like to create reciprocal friendships, you may log in as any of the sample users. **Please note:** This sample data is reset daily, so any changes to friendships, posts, etc. will be deleted in the next 24 hours.
 
 Email:
