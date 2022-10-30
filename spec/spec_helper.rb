@@ -98,4 +98,13 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  # Useful tool to keep tests lean and fast. Look for:
+  # - factories that take a long time to create
+  # - factories that build other factories that may not be needed for all tests
+  # config.before(:suite) do |example|
+  #   ActiveSupport::Notifications.subscribe("factory_bot.run_factory") do |name, start, finish, id, payload|
+  #     $stderr.puts "FactoryBot takes #{(finish - start).round(3)} seconds to #{payload[:strategy]} #{payload[:name]}"
+  #   end
+  # end
 end
